@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>CoMa</groupId>
+  <artifactId>Server</artifactId>	
+  <version>1.0</version>
+  <packaging>jar</packaging>
+  <dependencies>
+  </dependencies>	
+  <build>
+	<sourceDirectory>${basedir}/src</sourceDirectory>
+	<testSourceDirectory>${basedir}/test</testSourceDirectory>
+	<outputDirectory>${basedir}/build/classes</outputDirectory>
+	<testOutputDirectory>${basedir}/build/test/classes</testOutputDirectory>
+  </build>  
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changes-plugin</artifactId>
+				<configuration>
+					<xmlPath>${basedir}/src/changes/changes.xml</xmlPath>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>changes-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+			</plugin>			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<configuration>
+					<configLocation>checkstyle.xml</configLocation>
+				</configuration>				
+			</plugin>			
+		</plugins>
+	</reporting>  
+	
+	<name>CoMa-Bots Server</name>
+	<description>CoMa-Bots Server</description>
+	<url>http://www.google.de</url>
+	<inceptionYear>2010</inceptionYear>
+	<licenses>
+     <license>
+      <name>GNU General Public License (GPL), Version 2</name>
+      <url>http://www.fsf.org/licensing/licenses/gpl.txt</url>
+     </license>
+    </licenses>
+	<!--organization>
+		<name>COGA</name>
+		<url>http://math.tu-berlin.de</url>
+	</organization-->
+	<developers>
+		<developer>
+			<id>gross</id>
+			<name>Martin Groß</name>
+			<email>gross@math.tu-berlin.de</email>
+			<organization>COGA</organization>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>  
+	</developers>
+	<contributors>
+	</contributors>	
+	
+</project>

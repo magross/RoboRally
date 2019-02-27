@@ -1,0 +1,347 @@
+PLAYER_JOINED | Alice
+PLAYER_JOINED | Bob
+TIMEOUTS | ANNOUNCE_POWER_DOWN=60000 | PROGRAMMING=300000 | REMAIN_POWERED_DOWN=60000 | SPAWN_DIRECTION=120000 | SPAWN_TILE=60000
+TIMEOUTS | ANNOUNCE_POWER_DOWN=10000 | PROGRAMMING=60000 | REMAIN_POWERED_DOWN=10000 | SPAWN_DIRECTION=10000 | SPAWN_TILE=10000
+GAME_STARTED | Test
+GAME_PLAYERS | Alice | Bob
+GAME_STATUS | Risky Exchange | 12 | 16 | EASY | MEDIUM | 2 | 8 | Course Manual | An easy course to start on, but don't fall over the edge! | R _ _[W___] Cns _[W___] Csn Cns _[W___] Csn _[W___] Cns _ | Cwe _ P Cns _ Csn Cns CP1 Csn _ Gr Cwe | _[___W] _ _ Cns _ Csn Cns _ Csn _[___W] _ _[_(WL)__] | Cew Cew Cew Gl _ Csn Cns _ Csn Eew Eew Eew | _[___W] CP3 _ _ _[_WW_] Csn Cns _[__WW] _ _ _ _[_W__] | Cwe Cwe Cwe Cwe Cwe _ _ Cwe Cwe Cwe Cwe Cwe | _ Cew Cew Cew Cew _ _ Eew Eew Eew Eew Eew | _[___W] _ _ _ _[WW__] Esn Cns U[W__W] _ CP2 _ _[_W__] | Cwe Cwe Cwe Gl _ Esn Cns _ Gl Cwe Cwe Cwe | _[___W] _ _ Cns _ Esn Cns _ Csn _ _[W___] _[_W__] | P _[__W_] _[_W__] Cns _ Esn Cns _ Csn _ Gr Cew | _ _ _[__W_] Cns _[__W_] Esn _ _[__W_] Csn _[__W_] Cns R | SP7 _ _[W___] _ _[W__W] _ _ _[WW__] _ _[W___] _ SP8 | _ SP5[_W_W] _ _ _ _ _ _ _ _ SP6[_W_W] _ | Cew Cew Csw SP3 _ _[_W__] _ _ SP4 Cse Cwe Cwe | _ _ Cen Cew Cew SP1[_W__] SP2 Cwe Cwe Cwn _ _ | 
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | null | false | false
+ROBOT_STATUS | Bob | 3 | 10 | 10 | false | 0 | (6, 15) | (6,15) | null | false | false
+NEW_TURN | 1
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+EXECUTING_PROGRAM_CARD | Bob | (820, MOVE_3)
+EXECUTING_PROGRAM_CARD | Alice | (480, BACK)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | FORWARD
+EFFECT_OCCURRED | ROBOT_DESTROYED | Bob
+EFFECT_OCCURRED | MOVEMENT_BLOCKED | Alice
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | WEST | false | true
+ROBOT_STATUS | Bob | 3 | 0 | 10 | true | 0 | (6, 15) | (null,null) | SOUTH | true | false
+NEW_PHASE | 2
+EXECUTING_PROGRAM_CARD | Alice | (300, ROTATE_RIGHT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_RIGHT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | NORTH | false | true
+ROBOT_STATUS | Bob | 3 | 0 | 10 | true | 0 | (6, 15) | (null,null) | SOUTH | true | false
+NEW_PHASE | 3
+EXECUTING_PROGRAM_CARD | Alice | (650, MOVE_1)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,14) | NORTH | false | true
+ROBOT_STATUS | Bob | 3 | 0 | 10 | true | 0 | (6, 15) | (null,null) | SOUTH | true | false
+NEW_PHASE | 4
+EXECUTING_PROGRAM_CARD | Alice | (550, MOVE_1)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,13) | NORTH | false | true
+ROBOT_STATUS | Bob | 3 | 0 | 10 | true | 0 | (6, 15) | (null,null) | SOUTH | true | false
+NEW_PHASE | 5
+EXECUTING_PROGRAM_CARD | Alice | (780, MOVE_2)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | ROBOT_MOVED | Alice | SOUTH
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,12) | NORTH | false | true
+ROBOT_STATUS | Bob | 3 | 0 | 10 | true | 0 | (6, 15) | (null,null) | SOUTH | true | false
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,12) | NORTH | false | true
+ROBOT_STATUS | Bob | 3 | 0 | 10 | true | 0 | (6, 15) | (null,null) | SOUTH | true | false
+NEW_TURN | 2
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+EXECUTING_PROGRAM_CARD | Bob | (440, BACK)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | BACK
+EFFECT_OCCURRED | ROBOT_DESTROYED | Bob
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,12) | NORTH | false | false
+ROBOT_STATUS | Bob | 2 | 0 | 10 | true | 0 | (6, 15) | (null,null) | NORTH | true | false
+NEW_PHASE | 2
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,12) | NORTH | false | false
+ROBOT_STATUS | Bob | 2 | 0 | 10 | true | 0 | (6, 15) | (null,null) | NORTH | true | false
+NEW_PHASE | 3
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,12) | NORTH | false | false
+ROBOT_STATUS | Bob | 2 | 0 | 10 | true | 0 | (6, 15) | (null,null) | NORTH | true | false
+NEW_PHASE | 4
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,12) | NORTH | false | false
+ROBOT_STATUS | Bob | 2 | 0 | 10 | true | 0 | (6, 15) | (null,null) | NORTH | true | false
+NEW_PHASE | 5
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,12) | NORTH | false | false
+ROBOT_STATUS | Bob | 2 | 0 | 10 | true | 0 | (6, 15) | (null,null) | NORTH | true | false
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,12) | NORTH | false | false
+ROBOT_STATUS | Bob | 2 | 0 | 10 | true | 0 | (6, 15) | (null,null) | NORTH | true | false
+NEW_TURN | 3
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+EXECUTING_PROGRAM_CARD | Bob | (770, MOVE_2)
+EXECUTING_PROGRAM_CARD | Alice | (670, MOVE_2)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | ROBOT_MOVED | Alice | SOUTH
+EFFECT_OCCURRED | ROBOT_MOVED | Alice | SOUTH
+EFFECT_OCCURRED | ROBOT_MOVED | Bob | WEST
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,12) | NORTH | false | false
+ROBOT_STATUS | Bob | 1 | 8 | 10 | false | 0 | (6, 15) | (7,15) | EAST | false | true
+NEW_PHASE | 2
+EXECUTING_PROGRAM_CARD | Bob | (800, MOVE_3)
+EXECUTING_PROGRAM_CARD | Alice | (20, TURN_AROUND)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | TURN_AROUND
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,12) | SOUTH | false | false
+ROBOT_STATUS | Bob | 1 | 8 | 10 | false | 0 | (6, 15) | (10,15) | EAST | false | true
+NEW_PHASE | 3
+EXECUTING_PROGRAM_CARD | Alice | (630, MOVE_1)
+EXECUTING_PROGRAM_CARD | Bob | (340, ROTATE_RIGHT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | ROTATE_RIGHT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,13) | SOUTH | false | false
+ROBOT_STATUS | Bob | 1 | 8 | 10 | false | 0 | (6, 15) | (10,15) | SOUTH | false | true
+NEW_PHASE | 4
+EXECUTING_PROGRAM_CARD | Alice | (380, ROTATE_RIGHT)
+EXECUTING_PROGRAM_CARD | Bob | (330, ROTATE_LEFT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_RIGHT
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | ROTATE_LEFT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,13) | WEST | false | false
+ROBOT_STATUS | Bob | 1 | 8 | 10 | false | 0 | (6, 15) | (10,15) | EAST | false | true
+NEW_PHASE | 5
+EXECUTING_PROGRAM_CARD | Alice | (570, MOVE_1)
+EXECUTING_PROGRAM_CARD | Bob | (500, MOVE_1)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | FORWARD
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,13) | WEST | false | false
+ROBOT_STATUS | Bob | 1 | 8 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | true
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,13) | WEST | false | false
+ROBOT_STATUS | Bob | 1 | 8 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | true
+NEW_TURN | 4
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+EXECUTING_PROGRAM_CARD | Alice | (80, ROTATE_RIGHT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_RIGHT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,13) | NORTH | false | false
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_PHASE | 2
+EXECUTING_PROGRAM_CARD | Alice | (680, MOVE_2)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | MOVEMENT_BLOCKED | Alice
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,12) | NORTH | false | false
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_PHASE | 3
+EXECUTING_PROGRAM_CARD | Alice | (210, ROTATE_LEFT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_LEFT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,12) | WEST | false | false
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_PHASE | 4
+EXECUTING_PROGRAM_CARD | Alice | (370, ROTATE_LEFT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_LEFT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,12) | SOUTH | false | false
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_PHASE | 5
+EXECUTING_PROGRAM_CARD | Alice | (720, MOVE_2)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | SOUTH | false | false
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | SOUTH | false | false
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_TURN | 5
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+EXECUTING_PROGRAM_CARD | Alice | (170, ROTATE_LEFT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_LEFT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | EAST | false | true
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_PHASE | 2
+EXECUTING_PROGRAM_CARD | Alice | (750, MOVE_2)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | MOVEMENT_BLOCKED | Alice
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,14) | EAST | false | true
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_PHASE | 3
+EXECUTING_PROGRAM_CARD | Alice | (790, MOVE_3)
+EFFECT_OCCURRED | MOVEMENT_BLOCKED | Alice
+EFFECT_OCCURRED | MOVEMENT_BLOCKED | Alice
+EFFECT_OCCURRED | MOVEMENT_BLOCKED | Alice
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,14) | EAST | false | true
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_PHASE | 4
+EXECUTING_PROGRAM_CARD | Alice | (50, TURN_AROUND)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | TURN_AROUND
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,14) | WEST | false | true
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_PHASE | 5
+EXECUTING_PROGRAM_CARD | Alice | (560, MOVE_1)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | WEST | false | true
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | WEST | false | true
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_TURN | 6
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+EXECUTING_PROGRAM_CARD | Bob | (150, ROTATE_LEFT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | ROTATE_LEFT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | WEST | false | false
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | NORTH | false | false
+NEW_PHASE | 2
+EXECUTING_PROGRAM_CARD | Bob | (220, ROTATE_RIGHT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | ROTATE_RIGHT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | WEST | false | false
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | EAST | false | false
+NEW_PHASE | 3
+EXECUTING_PROGRAM_CARD | Bob | (160, ROTATE_RIGHT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | ROTATE_RIGHT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | WEST | false | false
+ROBOT_STATUS | Bob | 1 | 10 | 10 | false | 0 | (6, 15) | (11,15) | SOUTH | false | false
+NEW_PHASE | 4
+EXECUTING_PROGRAM_CARD | Bob | (510, MOVE_1)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | FORWARD
+EFFECT_OCCURRED | ROBOT_DESTROYED | Bob
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | WEST | false | false
+ROBOT_STATUS | Bob | 1 | 0 | 10 | true | 0 | (6, 15) | (null,null) | SOUTH | true | false
+NEW_PHASE | 5
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | WEST | false | false
+ROBOT_STATUS | Bob | 1 | 0 | 10 | true | 0 | (6, 15) | (null,null) | SOUTH | true | false
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | WEST | false | false
+ROBOT_STATUS | Bob | 1 | 0 | 10 | true | 0 | (6, 15) | (null,null) | SOUTH | true | false
+NEW_TURN | 7
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+EXECUTING_PROGRAM_CARD | Bob | (760, MOVE_2)
+EXECUTING_PROGRAM_CARD | Alice | (250, ROTATE_LEFT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Bob | FORWARD
+EFFECT_OCCURRED | ROBOT_DESTROYED | Bob
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_LEFT
+PLAYER_DESTROYED | Bob
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (4,14) | SOUTH | false | true
+NEW_PHASE | 2
+EXECUTING_PROGRAM_CARD | Alice | (590, MOVE_1)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | ROBOT_MOVED | Alice | EAST
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | SOUTH | false | true
+NEW_PHASE | 3
+EXECUTING_PROGRAM_CARD | Alice | (310, ROTATE_LEFT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_LEFT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | true
+NEW_PHASE | 4
+EXECUTING_PROGRAM_CARD | Alice | (470, BACK)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | BACK
+EFFECT_OCCURRED | ROBOT_MOVED | Alice | EAST
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | true
+NEW_PHASE | 5
+EXECUTING_PROGRAM_CARD | Alice | (430, BACK)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | BACK
+EFFECT_OCCURRED | ROBOT_MOVED | Alice | EAST
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | true
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | true
+NEW_TURN | 8
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+NEW_PHASE | 2
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+NEW_PHASE | 3
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+NEW_PHASE | 4
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+NEW_PHASE | 5
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+NEW_TURN | 9
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+NEW_PHASE | 2
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+NEW_PHASE | 3
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+NEW_PHASE | 4
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+NEW_PHASE | 5
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | EAST | false | false
+NEW_TURN | 10
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+EXECUTING_PROGRAM_CARD | Alice | (290, ROTATE_LEFT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_LEFT
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | NORTH | false | true
+NEW_PHASE | 2
+EXECUTING_PROGRAM_CARD | Alice | (50, TURN_AROUND)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | TURN_AROUND
+ROBOT_STATUS | Alice | 3 | 10 | 10 | false | 0 | (5, 15) | (5,15) | SOUTH | false | true
+NEW_PHASE | 3
+EXECUTING_PROGRAM_CARD | Alice | (560, MOVE_1)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | ROBOT_DESTROYED | Alice
+ROBOT_STATUS | Alice | 3 | 0 | 10 | true | 0 | (5, 15) | (null,null) | SOUTH | true | true
+NEW_PHASE | 4
+ROBOT_STATUS | Alice | 3 | 0 | 10 | true | 0 | (5, 15) | (null,null) | SOUTH | true | true
+NEW_PHASE | 5
+ROBOT_STATUS | Alice | 3 | 0 | 10 | true | 0 | (5, 15) | (null,null) | SOUTH | true | true
+ROBOT_STATUS | Alice | 3 | 0 | 10 | true | 0 | (5, 15) | (null,null) | SOUTH | true | true
+NEW_TURN | 11
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (5,15) | WEST | false | false
+NEW_PHASE | 2
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (5,15) | WEST | false | false
+NEW_PHASE | 3
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (5,15) | WEST | false | false
+NEW_PHASE | 4
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (5,15) | WEST | false | false
+NEW_PHASE | 5
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (5,15) | WEST | false | false
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (5,15) | WEST | false | false
+NEW_TURN | 12
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+EXECUTING_PROGRAM_CARD | Alice | (250, ROTATE_LEFT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_LEFT
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (5,15) | SOUTH | false | false
+NEW_PHASE | 2
+EXECUTING_PROGRAM_CARD | Alice | (360, ROTATE_RIGHT)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | ROTATE_RIGHT
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (5,15) | WEST | false | false
+NEW_PHASE | 3
+EXECUTING_PROGRAM_CARD | Alice | (430, BACK)
+EFFECT_OCCURRED | MOVEMENT_BLOCKED | Alice
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (5,15) | WEST | false | false
+NEW_PHASE | 4
+EXECUTING_PROGRAM_CARD | Alice | (680, MOVE_2)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | ROBOT_MOVED | Alice | EAST
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (4,15) | WEST | false | false
+NEW_PHASE | 5
+EXECUTING_PROGRAM_CARD | Alice | (660, MOVE_1)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | ROBOT_MOVED | Alice | EAST
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (4,15) | WEST | false | false
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (4,15) | WEST | false | false
+NEW_TURN | 13
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+EXECUTING_PROGRAM_CARD | Alice | (820, MOVE_3)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+ROBOT_STATUS | Alice | 2 | 10 | 10 | false | 0 | (5, 15) | (1,15) | WEST | false | true
+NEW_PHASE | 2
+EXECUTING_PROGRAM_CARD | Alice | (770, MOVE_2)
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | EXECUTE_MOVEMENT | Alice | FORWARD
+EFFECT_OCCURRED | ROBOT_DESTROYED | Alice
+ROBOT_STATUS | Alice | 2 | 0 | 10 | true | 0 | (5, 15) | (null,null) | WEST | true | true
+NEW_PHASE | 3
+ROBOT_STATUS | Alice | 2 | 0 | 10 | true | 0 | (5, 15) | (null,null) | WEST | true | true
+NEW_PHASE | 4
+ROBOT_STATUS | Alice | 2 | 0 | 10 | true | 0 | (5, 15) | (null,null) | WEST | true | true
+NEW_PHASE | 5
+ROBOT_STATUS | Alice | 2 | 0 | 10 | true | 0 | (5, 15) | (null,null) | WEST | true | true
+ROBOT_STATUS | Alice | 2 | 0 | 10 | true | 0 | (5, 15) | (null,null) | WEST | true | true
+NEW_TURN | 14
+PLAYER_LEFT | Alice
+EXECUTING_PROGRAMS
+NEW_PHASE | 1
+NEW_PHASE | 2
+NEW_PHASE | 3
+NEW_PHASE | 4
+NEW_PHASE | 5
+GAME_OVER | Bob

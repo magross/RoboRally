@@ -1,0 +1,169 @@
+8
+
+dir
+11573
+http://fs.math.tu-berlin.de:8000/svn/coga/teaching/CoMa/project2010/server/roborally
+http://fs.math.tu-berlin.de:8000/svn/coga
+
+
+
+2010-06-28T15:05:27.554328Z
+11567
+gross
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+1fe49489-11ee-47ec-f448-e8fac08702c7
+
+Phase.java
+file
+
+
+
+
+2010-02-13T12:40:47.218750Z
+b5ac2ca1c298f8aeb2db45f84249bcde
+2010-03-16T12:14:53.483674Z
+9854
+gross
+
+tiles
+dir
+
+ToDo.txt
+file
+
+
+
+
+2010-06-16T17:42:32.265625Z
+6209e457e964ea7f2fc58d0b4c70dae6
+2010-06-15T13:12:57.938412Z
+11380
+gross
+
+robot
+dir
+
+Deck.java
+file
+
+
+
+
+2010-06-12T13:23:39.000000Z
+12ff4a7174b4b5c63c567baae388e524
+2010-06-09T11:13:17.375559Z
+11277
+gross
+
+AtomicList.java
+file
+
+
+
+
+2010-05-01T10:05:52.015625Z
+55df0d42706f762b2170616da3ad1e7f
+2010-05-01T10:17:00.433559Z
+10734
+gross
+
+ai
+dir
+
+effect
+dir
+
+Direction.java
+file
+
+
+
+
+2010-02-05T14:06:43.593750Z
+d02164ed09e0778a2adfcd9632c09cbd
+2010-03-16T12:14:53.483674Z
+9854
+gross
+
+missile
+dir
+
+ChoiceManager.java
+file
+
+
+
+
+2010-06-29T06:52:07.890625Z
+19eae35d332cf8ff5c6becb40e77fa61
+2010-06-21T13:48:27.504469Z
+11464
+gross
+
+server
+dir
+
+Timing.java
+file
+
+
+
+
+2010-02-14T16:38:56.343750Z
+4fbc6aa09dc86f06ed41d242761f3dd9
+2010-03-16T12:14:53.483674Z
+9854
+gross
+
+ArrayIterator.java
+file
+
+
+
+
+2010-03-28T21:02:59.828125Z
+9df56b3e1da4fe51a227723c3a869f77
+2010-04-08T17:43:15.792117Z
+10239
+gross
+
+Choice.java
+file
+
+
+
+
+2010-05-19T18:03:15.234375Z
+8b4468f927226cc762b0c6cd23ac621b
+2010-05-19T13:42:59.012073Z
+10992
+gross
+
+AtomicSortedMap.java
+file
+
+
+
+
+2010-03-24T12:31:55.750000Z
+7a7d503b3bd0049db67ae68ddcdb48fd
+2010-03-24T12:48:01.409489Z
+9955
+gross
+
+client
+dir
+

@@ -1,0 +1,179 @@
+/*
+ * ChoiceManager.java
+ *
+ */
+package roborally.server;
+
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+import roborally.AtomicList;
+import static roborally.server.ServerMessage.*;
+
+/**
+ *
+ * @author Martin Groß
+ */
+public class ChoiceManager {
+
+    private CountDownLatch countdown;
+    private List<String> log;
+    private final AtomicList<Player> players;
+    private Map<Player, EnumMap<Choice.Type, Choice>> waitingForChoice;
+
+    public ChoiceManager(AtomicList<Player> players) {
+        this.countdown = new CountDownLatch(0);
+        this.log = new LinkedList<String>();
+        this.players = players;
+        this.waitingForChoice = new HashMap<Player, EnumMap<Choice.Type, Choice>>();
+    }
+
+    public void broadcast(ServerMessage message, Object... parameters) {
+        log.add(message.getMessage(parameters));
+        for (Player player : players.elements()) {
+            //System.out.println("ChoiceManager: " + message.getMessage(parameters));
+            player.sendMessage(message, parameters);
+        }
+    }
+
+    public List<String> getLog() {
+        return log;
+    }
+
+    public void clearChoices() {
+        for (Player player : players.elements()) {
+            if (waitingForChoice.containsKey(player)) {
+                waitingForChoice.get(player).clear();
+            }
+        }
+    }
+
+    public Choice getChoice(Player player, Choice.Type type) {
+        Choice result = null;
+        if (waitingForChoice.containsKey(player) && waitingForChoice.get(player).containsKey(type)) {
+            result = waitingForChoice.get(player).get(type);
+        }
+        return result;
+    }
+
+    public boolean process(Player player, Choice.Type type, String indexString) {
+        boolean result = false;
+        if (waitingForChoice.containsKey(player) && waitingForChoice.get(player).containsKey(type)) {
+            Choice choice = waitingForChoice.get(player).get(type);
+            result = choice.choose(indexString);
+            countdown.countDown();
+        } else {
+            player.sendMessage(NOT_WAITING_FOR_THIS_CHOICE, type);
+        }
+        return result;
+    }
+
+    public <T> List<T> requestChoice(Player player, Choice<T> choice) {
+        return requestChoice(player, choice, 0, null);
+    }
+
+    public <T> List<T> requestChoice(Player player, Choice<T> choice, long timeout, TimeUnit unit) {
+        List<T> result = null;
+        if (choice.isChosen()) {
+            result = choice.getChosenObjects();
+        } else {
+            registerChoiceRequest(player, choice);
+            notifyAboutChoiceRequest(player, choice);
+            if (timeout > 0) {
+                if (!choice.await(timeout, unit)) {
+                    notifyAboutTimeout(player, choice);
+                }
+                notifyAboutChoiceReply(player, choice);
+                result = choice.getChosenObjects();
+            }
+        }
+        return result;
+    }
+
+    public void waitForAllOpenChoices(long timeout) {
+        int sum = 0;
+        for (Player player : players.elements()) {
+            if (waitingForChoice.containsKey(player)) {
+                for (Choice choice : waitingForChoice.get(player).values()) {
+                    sum += (choice.isChosen()) ? 0 : 1;
+                }
+            }
+        }
+        //System.out.println("CM: " + sum + " " + timeout);
+        countdown = new CountDownLatch(sum);
+        try {
+            countdown.await(timeout, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException ex) {
+        }
+        for (Player player : players.elements()) {
+            if (waitingForChoice.containsKey(player)) {
+                for (Choice choice : waitingForChoice.get(player).values()) {
+                    if (!choice.isChosen()) {
+                        notifyAboutTimeout(player, choice);
+                        choice.choose();
+                    }
+                }
+            }
+        }
+        for (Player player : players.elements()) {
+            if (waitingForChoice.containsKey(player)) {
+                for (Choice choice : waitingForChoice.get(player).values()) {
+                    notifyAboutChoiceReply(player, choice);
+                }
+            }
+        }
+    }
+
+    protected void registerChoiceRequest(Player player, Choice<?> choice) {
+        if (!waitingForChoice.containsKey(player)) {
+            waitingForChoice.put(player, new EnumMap<Choice.Type, Choice>(Choice.Type.class));
+        }
+        waitingForChoice.get(player).put(choice.getType(), choice);
+    }
+
+    protected void notifyAboutTimeout(Player player, Choice<?> choice) {
+        for (Player p : players.elements()) {
+            p.sendMessage(ServerMessage.TIMEOUT, player, choice.getType());
+        }
+    }
+
+    protected void notifyAboutChoiceRequest(Player selector, Choice<?> choice) {
+        for (Player player : players.elements()) {
+            if (player == selector) {
+                selector.sendMessage(CHOOSE, choice.getType(), choice.getNumberOfPicks(), choice.getChoosableObjects());
+            } else {
+                switch (choice.getVisibilty()) {
+                    case PUBLIC:
+                        player.sendMessage(CHOOSE, selector, choice.getType(), choice.getNumberOfPicks(), choice.getChoosableObjects());
+                        break;
+                    case RESULT_ONLY:
+                        player.sendMessage(CHOOSE, selector, choice.getType());
+                        break;
+                    default:
+                        new AssertionError(choice.getVisibilty() + " is not handled yet.");
+                }
+            }
+        }
+    }
+
+    protected void notifyAboutChoiceReply(Player selector, Choice<?> choice) {
+        for (Player player : players.elements()) {
+            if (player == selector) {
+                selector.sendMessage(CHOSEN, player, choice.getType(), choice.getChosenObjects());
+            } else {
+                switch (choice.getVisibilty()) {
+                    case PUBLIC:
+                    case RESULT_ONLY:
+                        selector.sendMessage(CHOSEN, player, choice.getType(), choice.getChosenObjects());
+                        break;
+                    default:
+                        new AssertionError(choice.getVisibilty() + " is not handled yet.");
+                }
+            }
+        }
+    }
+}

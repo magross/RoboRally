@@ -1,0 +1,9 @@
+Testen:
+Zwei Conveyor, die aufsselbe Felf schieben, haben keinen Effekt
+
+Update:
+Zwei gleichzeitig aktive Pusher haben keine Wirkung
+
+Fixen:
+Leere Replays
+"Falscher Gewinner" nach PUSH / Reihenfolge von Gewinnern im gleichen Zug

@@ -1,0 +1,26 @@
+Name: Cannery Row
+Description: Don't get crushed!
+Author: Course Manual
+Min. Players: 2
+Max. Players: 8
+Difficulty: Expert
+Length: Medium
+Height: 16
+Width: 12
+Course:
+Ee           Eenw           Ee[W _ _ _]      Ee             Csew[W _ _ _]   Cwn              P            CP4[W _ _ _]  _                  _[W _ (W L L L) _]  _[_ W _ _]       Es
+_            CP1            _[W _ _ _]       _              (Cs CR15)       Cse              Cws          _             _                  _[_ W _ _]          R                Esne
+_[_ _ _ W]   _[W W _ _]     _[_ (W L L) _ _] _              Cs              P                (Cn CR15)    _             _[_ (W L) _ (W L)] _                   _                Es[_ W _ _]
+_            _[W _ _ _]     _                _[_ W _ _]     (Cs CR24)       _[W _ (W L) _]   Cn           _             _                  _[(W L) _ _ _]      _                Es
+_[_ _ _ W]   _              _[(W L) _ _ _]   _[_ _ W _]     Cs              Ce               (Cn CR24)    _             _[W _ _ _]         _                   _[W W _ _]       Es[_ W _ _]
+_            _[(W L) _ _ _] _[_ _ W _]       U              (Cs CR3)        Cw               Cnes         Ew            Ew[(W PU24) _ _ _] Ew[(W PU135) _ _ _] Ew               Ewne
+Eesw         Ee             Ee               Ee[_ _ W _]    Csnw            Ce               (Cn CR3)     _             Ee                 Esw                 CP2              Ces
+En[_ _ _ W]  _[W _ _ W]     _[_ _ W _]       _              (Cs CR24)       Cw               Cn           _             _                  Es                  _[_ _ W _]       Cn[_ W _ _]
+En           _              CP3              _[_ _ _ (W L)] Cs[_ _ _ W]     U                (Cn CR24)    _[_ _ W _]    _                  P                   _                Cnes
+En[_ _ _ W]  _[W W _ _]     _                _[_ _ W _]     (Cs CR15)       _[W _ _ _]       Cn           _             _[_ _ _ (W PU3)]   _[W _ (W L L) _]    _[_ (W PU4) _ _] Cn[_ W _ _]
+Ensw         R              _[_ _ W _]       _              Cs[_ _ _ (W L)] _[_ _ _ (W PU3)] (Cn CR15)    _             _[_ _ W _]         U                   _[_ _ W W]       Cn
+En           _              _[_ _ W _]       _              Cen             Csw              Cnes         Ew[_ _ W _]   Ew                 Ew[_ _ W _]         Ewes             Ew
+_            _              _[W _ _ _]       _              _[W _ _ _]      _                _            _[W _ _ _]    _                  _[W _ _ _]          _                _
+_            _              _                _              _               _                _            _             _                  _                   _                _
+SP7[_ W _ _] SP5            _                SP3[_ _ _ W]   _               SP1[_ W _ W]     SP2[_ W _ W] _             SP4[_ W _ _]       _                   SP6              SP8[_ _ _ W]
+_            _              _[_ _ W _]       _              _[_ _ W _]      _                _            _[_ _ W _]    _                 _[_ _ W _]           _                _

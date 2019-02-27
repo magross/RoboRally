@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/coga/!svn/ver/11563/teaching/CoMa/project2010/server/roborally/server
+END
+ClientMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/coga/!svn/ver/11563/teaching/CoMa/project2010/server/roborally/server/ClientMessage.java
+END
+Ruleset.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/coga/!svn/ver/10854/teaching/CoMa/project2010/server/roborally/server/Ruleset.java
+END
+Scenario.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/coga/!svn/ver/10852/teaching/CoMa/project2010/server/roborally/server/Scenario.java
+END
+Server.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/coga/!svn/ver/11563/teaching/CoMa/project2010/server/roborally/server/Server.java
+END
+Game.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/coga/!svn/ver/11464/teaching/CoMa/project2010/server/roborally/server/Game.java
+END
+ServerMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/coga/!svn/ver/11204/teaching/CoMa/project2010/server/roborally/server/ServerMessage.java
+END
+Player.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/coga/!svn/ver/11326/teaching/CoMa/project2010/server/roborally/server/Player.java
+END
+Replay.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/coga/!svn/ver/11563/teaching/CoMa/project2010/server/roborally/server/Replay.java
+END
+PlayerState.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/coga/!svn/ver/9854/teaching/CoMa/project2010/server/roborally/server/PlayerState.java
+END

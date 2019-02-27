@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="4.1">
+<file name="C:\proj\RoboRally\src\roborally\AtomicList.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\AtomicSortedMap.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\client\Client.java">
+<error line="101" column="64" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\Direction.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\ArchiveEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\CancelMovement.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\DamageEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\DestroyEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\Effect.java">
+<error line="16" column="1" severity="error" message="Name &apos;Effect&apos; must match pattern &apos;^Abstract.*$|^.*Factory$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.AbstractClassNameCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\EffectManager.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\ExecuteMovementEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\MoveEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\ProgressEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\RepairEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\RobotEffect.java">
+<error line="14" column="1" severity="error" message="Name &apos;RobotEffect&apos; must match pattern &apos;^Abstract.*$|^.*Factory$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.AbstractClassNameCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\RotateLeftEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\RotateRightEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\SlowMovement.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\SpawnMissileEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\TileEffect.java">
+<error line="14" column="1" severity="error" message="Name &apos;TileEffect&apos; must match pattern &apos;^Abstract.*$|^.*Factory$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.AbstractClassNameCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\effect\TurnAroundEffect.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\missile\LaserMissile.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\missile\Missile.java">
+<error line="19" column="1" severity="error" message="Name &apos;Missile&apos; must match pattern &apos;^Abstract.*$|^.*Factory$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.AbstractClassNameCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\Phase.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\robot\Deck.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\robot\Movement.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\robot\ProgramCard.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\robot\ProgramCommand.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\robot\ProgramRegister.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\robot\Robot.java">
+<error line="50" column="9" severity="error" message="switch without &quot;default&quot; clause." source="com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck"/>
+<error line="81" column="9" severity="error" message="switch without &quot;default&quot; clause." source="com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck"/>
+<error line="256" column="44" severity="error" message="Avoid inline conditionals." source="com.puppycrawl.tools.checkstyle.checks.coding.AvoidInlineConditionalsCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\Choice.java">
+<error line="101" column="43" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\ChoiceManager.java">
+<error line="102" column="48" severity="error" message="Avoid inline conditionals." source="com.puppycrawl.tools.checkstyle.checks.coding.AvoidInlineConditionalsCheck"/>
+<error line="110" column="43" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\ClientMessage.java">
+<error line="225" column="36" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\Game.java">
+<error line="16" severity="error" message="Wrong order for &apos;roborally.robot.ProgramCard&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="18" severity="error" message="Wrong order for &apos;java.util.Arrays&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="32" severity="error" message="Wrong order for &apos;roborally.effect.Effect&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="207" column="21" severity="error" message="Expression can be simplified." source="com.puppycrawl.tools.checkstyle.checks.coding.SimplifyBooleanExpressionCheck"/>
+<error line="431" column="9" severity="error" message="Method length is 186 lines (max allowed is 150)." source="com.puppycrawl.tools.checkstyle.checks.sizes.MethodLengthCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\Player.java">
+<error line="9" severity="error" message="Wrong order for &apos;java.io.BufferedReader&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="124" column="35" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+<error line="195" column="41" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\PlayerState.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\Replay.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\Ruleset.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\Scenario.java">
+<error line="64" column="9" severity="error" message="switch without &quot;default&quot; clause." source="com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\Server.java">
+<error line="303" column="45" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\server\ServerMessage.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\test\TestDeck.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\AbstractTransportingElement.java">
+<error line="12" severity="error" message="Wrong order for &apos;roborally.effect.MoveEffect&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="30" column="129" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\BlockingMissiles.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\BorderElement.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Checkpoint.java">
+<error line="9" severity="error" message="Wrong order for &apos;roborally.effect.ArchiveEffect&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\ContextElement.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Conveyor.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Crusher.java">
+<error line="8" severity="error" message="Wrong order for &apos;java.util.EnumSet&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Current.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\DeepCurrent.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\DeepWater.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Empty.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\ExpressConveyor.java">
+<error line="26" column="133" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Flamer.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Gear.java">
+<error line="8" severity="error" message="Wrong order for &apos;roborally.Direction&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="10" severity="error" message="Wrong order for &apos;roborally.effect.TileEffect&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="11" severity="error" message="Wrong order for &apos;roborally.effect.RotateLeftEffect&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Laser.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Pit.java">
+<error line="8" severity="error" message="Wrong order for &apos;roborally.effect.DestroyEffect&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Pusher.java">
+<error line="8" severity="error" message="Wrong order for &apos;java.util.EnumSet&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Radiation.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\RadioactiveWaste.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Repair.java">
+<error line="9" severity="error" message="Wrong order for &apos;roborally.effect.ArchiveEffect&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\StartingPoint.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Upgrade.java">
+<error line="9" severity="error" message="Wrong order for &apos;roborally.effect.ArchiveEffect&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Wall.java">
+<error line="9" severity="error" message="Wrong order for &apos;roborally.effect.CancelMovement&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\elements\Water.java">
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\Tile.java">
+<error line="170" column="20" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+<error line="183" column="28" severity="error" message="Must have at least one statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\TileElement.java">
+<error line="15" severity="error" message="Wrong order for &apos;roborally.Phase&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="45" column="1" severity="error" message="Name &apos;TileElement&apos; must match pattern &apos;^Abstract.*$|^.*Factory$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.AbstractClassNameCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\tiles\TileGrid.java">
+<error line="131" column="35" severity="error" message="Avoid inline conditionals." source="com.puppycrawl.tools.checkstyle.checks.coding.AvoidInlineConditionalsCheck"/>
+</file>
+<file name="C:\proj\RoboRally\src\roborally\Timing.java">
+</file>
+</checkstyle>

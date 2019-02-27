@@ -1,0 +1,69 @@
+K 26
+svn:wc:ra_dav:activity-url
+V 19
+/svn/coga/!svn/act/
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/coga/!svn/ver/11567/teaching/CoMa/project2010/server/roborally
+END
+Direction.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/coga/!svn/ver/9854/teaching/CoMa/project2010/server/roborally/Direction.java
+END
+Phase.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/coga/!svn/ver/9854/teaching/CoMa/project2010/server/roborally/Phase.java
+END
+ToDo.txt
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/coga/!svn/ver/11380/teaching/CoMa/project2010/server/roborally/ToDo.txt
+END
+ChoiceManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/coga/!svn/ver/11464/teaching/CoMa/project2010/server/roborally/ChoiceManager.java
+END
+Deck.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/coga/!svn/ver/11277/teaching/CoMa/project2010/server/roborally/Deck.java
+END
+Timing.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/coga/!svn/ver/9854/teaching/CoMa/project2010/server/roborally/Timing.java
+END
+AtomicList.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/coga/!svn/ver/10734/teaching/CoMa/project2010/server/roborally/AtomicList.java
+END
+ArrayIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/coga/!svn/ver/10239/teaching/CoMa/project2010/server/roborally/ArrayIterator.java
+END
+Choice.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/coga/!svn/ver/10992/teaching/CoMa/project2010/server/roborally/Choice.java
+END
+AtomicSortedMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/coga/!svn/ver/9955/teaching/CoMa/project2010/server/roborally/AtomicSortedMap.java
+END

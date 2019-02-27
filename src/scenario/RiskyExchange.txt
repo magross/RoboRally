@@ -1,0 +1,26 @@
+Name: Risky Exchange
+Description: An easy course to start on, but don't fall over the edge!
+Author: Course Manual
+Min. Players: 2
+Max. Players: 8
+Difficulty: Easy
+Length: Medium
+Height: 16
+Width: 12
+Course:
+R          _             _[W _ _ _] Cn   _[W _ _ _] Cs            Cn   _[W _ _ _] Cs   _[W _ _ _] Cn            _             
+Cw         _             P          Cn   _          Cs            Cn   CP1        Cs   _          Gr            Cw            
+_[_ _ _ W] _             _          Cn   _          Cs            Cn   _          Cs   _[_ _ _ W] _             _[_ (W L) _ _]
+Ce         Ce            Ce         Gl   _          Cs            Cn   _          Cs   Ee         Ee            Ee            
+_[_ _ _ W] CP3           _          _    _[_ W W _] Cs            Cn   _[_ _ W W] _    _          _             _[_ W _ _]
+Cw         Cw            Cw         Cw   Cw         _             _    Cw         Cw   Cw         Cw            Cw            
+_          Ce            Ce         Ce   Ce         _             _    Ee         Ee   Ee         Ee            Ee            
+_[_ _ _ W] _             _          _    _[W W _ _] Es            Cn   U[W _ _ W] _    CP2        _             _[_ W _ _]
+Cw         Cw            Cw         Gl   _          Es            Cn   _          Gl   Cw         Cw            Cw            
+_[_ _ _ W] _             _          Cn   _          Es            Cn   _          Cs   _          _[W _ _ _]    _[_ W _ _]    
+P          _[_ _ W _]    _[_ W _ _] Cn   _          Es            Cn   _          Cs   _          Gr            Ce            
+_          _             _[_ _ W _] Cn   _[_ _ W _] Es            _    _[_ _ W _] Cs   _[_ _ W _] Cn            R             
+SP7        _             _[W _ _ _] _    _[W _ _ W] _             _    _[W W _ _] _    _[W _ _ _] _             SP8            
+_          SP5[_ W _ W]  _          _    _          _             _    _          _    _          SP6[_ W _ W] _             
+Ce         Ce            Csw        SP3  _          _[_ W _ _]    _    _          SP4  Cse        Cw            Cw
+_          _             Cen        Ce   Ce         SP1[_ W _ _]  SP2  Cw         Cw   Cwn        _             _
