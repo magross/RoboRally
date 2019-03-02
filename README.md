@@ -65,8 +65,10 @@ The server accepts the following message types from the client:
   
 In the following, all of these message types will be explained in detail. If we are talking about strings, we assume that the character `|` is forbidden.
 
-### INTRODUCE | <Client name> | <Passwort>
+`INTRODUCE | <Client name> | <Passwort>`
+
 Number of arguments: 1-2 
+
 Valid in the following states: If an introduction has not happened yet 
  
 Introduces a client to server, with '<Client name>' being an arbitrary string
