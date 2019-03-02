@@ -63,7 +63,13 @@ The server accepts the following message types from the client:
   - `START_GAME`
   - `CLOSE_CONNECTION`
   
-In the following, we will explain all of these message types in detail.
+In the following, all of these message types will be explained in detail. If we are talking about strings, we assume that the character `|` is forbidden.
+
+### INTRODUCE | <Client name> | <Passwort>
+Number of arguments: 1-2 
+Valid in the following states: If an introduction has not happened yet 
+ 
+Introduces a client to server, with '<Client name>' being an arbitrary string
   \clientmessage
   {INTRODUCE | <Clienttyp> | <Passwort>}
   {1-2}
