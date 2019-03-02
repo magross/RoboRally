@@ -498,13 +498,45 @@ Factory elements that are only active in specific phases can have numbers from 1
  \end{tabular}   
  \end{table}
    
- \subsection{Kommunikation während des Spiels}
+ ## Communication during the game
  
- Nachdem die Clienten die \texttt{GAME\_STATUS}-Nachrichten erhalten haben, werden sie der Reihe nach mit \texttt{CHOOSE | SPAWN\_DIRECTION} aufgefordert, die Startrichtung für ihren Roboter zu wählen. 
+ After the clients received their `GAME_STATUS`-messages, they will be prompted by the server with 
  
- Zu Beginn einer neuen Runde erhalten die Spieler eine \texttt{NEW\_TURN | <Rundennummer>}-Nachricht; abgeschaltete Roboter werden mittels \texttt{CHOOSE | REMAIN\_POWERED\_DOWN} gefragt, ob sie abgeschaltet bleiben wollen. Anschließend erhalten die Roboter ihre Karten und werden per \texttt{CHOOSE | PROGRAMMING} aufgefordert, ihre Programmierung vorzunehmen, was alle Roboter parallel machen. Nachdem die Programmierung abgeschlossen ist, werden die Roboter der Reihe nach per \texttt{CHOOSE | ANNOUNCE\_POWER\_DOWN} gefragt, ob sie sich in der nächsten Runde abschalten wollen.
+ `CHOOSE | SPAWN_DIRECTION`
  
- Danach sendet der Server \texttt{EXECUTING\_PROGRAM\_CARDS} und fängt an, die Programme auszuführen. Vor Beginn jeder Phase sendet er dabei jeweils \texttt{NEW\_PHASE | <Phasennummer>} an die Spieler. Unmittelbar vor dem Ausführen einer Programm-Karte kündigt der Server mittels \texttt{EXECUTE\_PROGRAM\_CARD | <Programm-Karte>} an, was gerade ausgeführt wird. Am Ende jeder Phase und am Ende jeder Runde erhalten alle Spieler den aktuellen Zustand jedes Roboters mittels einer Nachricht der Form:
+ messages to choose the spawn direction of their robots.
+ 
+ At the start of the new turn, the clients receive a 
+ 
+ `NEW_TURN | <Number of turn>`
+ 
+ message. Powered down robots will be prompted with  a 
+ 
+ `CHOOSE | REMAIN_POWERED_DOWN` 
+ 
+ message whether they want to remain powered down. After that, the clients receive the cards for programming their robots and have to make a choice. This happens by a 
+ 
+ `CHOOSE | PROGRAMMING` 
+ 
+ message, which all clients do in parallel. After all clients replied to the prompt, all clients are prompted one after the other whether they want to power down their robots for the next round by a 
+ 
+ `CHOOSE | ANNOUNCE_POWER_DOWN`
+ 
+ message.
+ 
+ After this, the server sends
+ 
+ `EXECUTING_PROGRAM_CARDS`
+ 
+ and begins to execute the programs the clients set for their robots. At the beginning of each phase, the server sends 
+ 
+ `NEW_PHASE | <Phase number>`
+ 
+ to the clients. Immediately before executing a program card, the server announces via 
+ 
+ `EXECUTE_PROGRAM_CARD | <Program card>`
+ 
+ what is being executed. After the end of each phase and at the end of each turn the clients receive an update about the state of their robots by a message of the type:
  \ama
   &\text{\texttt{ROBOT\_STATUS | <Name> | <Lebenspunkte> | <Max. Lebenspunkte>}}\\
   &\text{\texttt{| <Zerstört?> | <Fortschritt> | <Archiv-Feld> | <Aktuelles Feld>}}\\
@@ -512,7 +544,19 @@ Factory elements that are only active in specific phases can have numbers from 1
  \ema
  Dabei ist \texttt{<Name>} der Name des Spieler, dem der Roboter gehört; \texttt{<Lebenspunkte>} und \texttt{<Max. Lebenspunkte>} sind die aktuellen und maximalen Lebenspunkte des Roboters. \texttt{<Zerstört?>} gibt an, ob der Roboter zerstört ist, \texttt{<Fortschritt>} gibt die Anzahl erreichter Checkpoints an. \texttt{<Archiv-Feld>} und \texttt{<Aktuelles Feld>} geben die Position der Sicherungskopie und des Roboters an, die Koordinaten haben die Form $(x,y)$, wobei der Ursprung das oberste linke Feld des Spielplans ist. \texttt{<Richtung>} gibt die Richtung des Roboters an (NORTH, EAST, SOUTH, WEST), \texttt{<Abschalten angekündigt?>} und \texttt{<Abgeschaltet?>} genau das, was sie vermuten lassen.
                  
-Wird ein Spieler zerstört (d.h. sein Roboter ist zerstört und er hat keine Leben mehr), wird \texttt{PLAYER\_DESTROYED | <Spielername>} gesendet. Erreicht ein Spieler den letzten Checkpoint, wird \texttt{PLAYER\_ARRIVED | <Spielername>} geschickt. Sobald alle Spieler zerstört oder angekommen sind ist das Spiel vorbei und es wird \texttt{GAME\_OVER | <Spieler1> | <Spieler2> | ...} gesendet, wobei die Spieler in ihrer Ankunfsreihenfolge geordnet sind.
+If a player is destroyed, i.e. its robot is destroyed and there are no more lives left, a 
+
+`PLAYER_DESTROYED | <Name of player>` 
+
+message is sent. If a player reaches the final checkpoint, a 
+
+`PLAYER_ARRIVED | <Name of player>`
+
+is sent. Once all players are destroyed or have arrived at the last checkpoint, the game is over and a 
+
+`GAME_OVER | <Player1> | <Player2> | ...`
+
+is sent, with the players being ordered in their order of arrival. After the game is over, a replay with the game name and the end date and time as its name will be saved.
   
 ## AIs  
   
