@@ -44,7 +44,7 @@ where `<Min>` and `<Max>` are the minimal and maximal number of parameters for t
 
 ## Messages to the server
 The server accepts the following message types from the client:
-  - `INTRODUCE`
+  - [`INTRODUCE`](https://github.com/magross/RoboRally/blob/master/README.md#introduce)
   - `REGISTER`
   - `SEND_SERVER_MESSAGE`
   - `SEND_GAME_MESSAGE`
