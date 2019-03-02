@@ -1,9 +1,28 @@
 # RoboRally
-This project provides a server that can host RoboRally games, enforce the game rules and communicate with UI or AI clients using a protocol build upon TCP/IP. The project was used to run AI tournaments in Java classes, letting the students create AIs for RoboRally in groups, and then using this server to put the students' AIs against each other.
+This project provides a server that can host RoboRally games, enforce the game rules and communicate with AI clients using a protocol build upon TCP/IP. The project was used to run AI tournaments in Java classes, letting the students create AIs for RoboRally in groups, and then using this server to put the students' AIs against each other.
 
 ## Server
 The jar-file of the server can be found under [dist/RoboRally.jar](dist/RoboRally.jar). To run this server, it is sufficient to type `java -jar RoboRally.jar`. The server accepts various optional command line parameters:
  
+- `-c` or `--connections`: Sets the maximum number of clients that the server accepts. The default is 50.
+- `-x` or `--password`: Sets a password that clients have to provide at registration. If the password is set to "", the clients do not have to provide a password. The default is "".
+- `-p` or `--port`: Sets the port that the server uses to listen for clients. The default is 8888.
+- `-r` or `--replay`: Specifies the folder in which the server looks for replays and saves replays. The default is "replay".
+- `-s` or `--scenario`: Specifies the folder in which the server looks for scenarios. The default is "scenario".
+- `-a` or `--ai`: Specifies the folder in which the server looks for AIs. An AI needs to be packed in a JAR file containing a class with static methods `createAIClient(String, String, int, String, String, String, String)` and `getAiProfiles()`. See also section The default is "ai".
+
+
+        UnflaggedOption opt6 = new UnflaggedOption("message").setStringParser(JSAP.STRING_PARSER).setDefault("Welcome!").setRequired(false).setGreedy(true);
+        opt6.setHelp("Sets the welcome message of the server.");
+
+        FlaggedOption opt8 = new FlaggedOption("master-password").setStringParser(JSAP.STRING_PARSER).setDefault("").setRequired(false).setShortFlag('m').setLongFlag("admin");
+        opt8.setHelp("Sets the master-passwort, with which registered players can get admin rights. Without this password, no player can become admin.");
+
+        Switch sw1 = new Switch("statistics").setLongFlag("statistics");
+        sw1.setHelp("Specifies whether the server saves statistics to replays (e.g. when which player arrived with his robot).");
+
+        Switch sw2 = new Switch("help").setShortFlag('h').setLongFlag("help");
+        sw2.setHelp("Shows this help.");
  
   \begin{table}[h]
    \centering
@@ -33,11 +52,11 @@ After a connection has been established, the server sends a welcome message to t
 
 `WELCOME | <Welcome message>`
 
-followed by the message
+where `<Welcome message>` is any string. This message is followed by the message
 
 `AWAITING_REGISTRATION`
 
-After receiving the `AWAITING\_REGISTRATION}>` message, the client can introduce himself and register a name, as described in section MESSAGES TO THE SERVER.
+After receiving the `AWAITING\_REGISTRATION` message, the client can introduce himself and register a name, as described in section MESSAGES TO THE SERVER.
 
 If the server does not recognize the type of a message (i.e., the first part of the message), he will reply by a message of the form
 
@@ -394,12 +413,14 @@ In the following, we will explain all of these message types in detail.
  }
  {GET\_SCENARIO | Risky Exchange}  
    
- \subsection{Beschreibung des Spielfelds}  
-   
-Jede Zeile des rechteckigen Spielfelds wird durch ein \texttt{|} terminiert.
- 
- Ein Feld des Spielplans besteht aus einem oder mehreren Fabrikelementen, die sich entweder in der Mitte des Feldes oder an einem der vier Ränder (Norden, Osten, Süden, Westen) des Feldes befinden können. Ein Fabrikelement wird durch eine Folge von Großbuchstaben kodiert, die die Art des Fabrikelements angeben. An die Großbuchstaben angehängte Kleinbuchstaben und Zahlen dienen als Parameter für das Fabrikelement.
- 
+ ## Encoding of the area the robots are playing in
+
+The area is always rectangular, and every line of the area is terminated by the character `|`, and consists of game fields.
+
+A game field consists of one or more factory elements, which can either be the center of the field, or on one the four borders (north, east, south, west) of the field. A factory element is denoted by a sequence of upper-case characters, which specify the type of the factory element. Appended to the upper case characters can be lower case characters and numbers, that act as parameters for the factory element.
+
+Factory elements that are only active in specific phases can have numbers from 1-5 appended to them to specify in which phases these elements become active. For example, `PU24` refers to a pusher factory element that is active in phase 2 and 4. 
+
  An Phasen-aktive Elemente können die Ziffern 1-5 angehängt werden um zu beschreiben, in welchen Phasen diese Elemente aktiv sind. \text{\texttt{PU24}} steht z.B. für einen Pusher, der in der 2. und 4. Phase aktiv wird. Band-Elemente wie Förderbänder haben eine Richtung, in der sie Transporieren, welche durch einen Kleinbuchstaben (n,e,s,w für Norden, Osten, Süden, Westen) direkt nach den Großbuchstaben angegeben wird. Werden keine weiteren Kleinbuchstaben angegeben, wird davon ausgegangen, dass das Band aus der gegenüberliegenden Richtung kommt. Ansonsten können die Herkunftsrichtungen durch weitere Kleinbuchstaben beschrieben werden. \texttt{Cwns} ist z.B. ein Förderband, was von Norden und Süden nach Westen transportiert (ein T-Stück also). Die Ziffern der Checkpoints definieren die Reihenfolge, in der die Checkpoints angefahren werden müssen, der erste Checkpoint hat dabei die Nummer 1. Eine Übersicht der Elemente findet sich in der Tabelle.
  
  Besitzt ein Feld mehrere Elemente an derselben Position, z.B. eine Mauer und ein Laser, werden die Elemente durch Leerzeichen getrennt und mit runden Klammern eingeschlossen, in dem Beispiel so: \texttt{(W L)}. 
@@ -459,7 +480,8 @@ Jede Zeile des rechteckigen Spielfelds wird durch ein \texttt{|} terminiert.
                  
 Wird ein Spieler zerstört (d.h. sein Roboter ist zerstört und er hat keine Leben mehr), wird \texttt{PLAYER\_DESTROYED | <Spielername>} gesendet. Erreicht ein Spieler den letzten Checkpoint, wird \texttt{PLAYER\_ARRIVED | <Spielername>} geschickt. Sobald alle Spieler zerstört oder angekommen sind ist das Spiel vorbei und es wird \texttt{GAME\_OVER | <Spieler1> | <Spieler2> | ...} gesendet, wobei die Spieler in ihrer Ankunfsreihenfolge geordnet sind.
   
-  %   \item \texttt{ab hier Madeleines Liste}
+## AIs  
+  
 %     GAME("%1$s | %2$s | %3$s | %4$s"),
 %     JOINING\_FAILED("%1$s"),
 %     PLAYER\_JOINED("%1$s"),
