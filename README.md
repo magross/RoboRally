@@ -73,7 +73,7 @@ In the following, all of these message types will be explained in detail. If we 
  
 Introduces a client to server, with `<Client name>` being an arbitrary string that tells the server about the type of the AI (e.g. Jane's AI). It is possible for two or more clients to use the same string. The parameter `<Passwort>` is optional and needs only to be given if access to the server is password protected. The password is case-sensitive, whitespace in the beginning and end is ignored. The server sends
 
-`INTRODUCTION\_SUCCESSFUL`
+`INTRODUCTION_SUCCESSFUL`
 
 if the introduction was successful, otherwise he sends:
 
@@ -178,187 +178,199 @@ Example:
 
 #### ECHO
 
+`ECHO | <Message>` 
 
- \clientmessage
- {ECHO | <Nachricht>}
- {1}
- {Wenn man auf dem Server registriert ist}
- { Schickt die spezifizierte Nachricht an sich selbst. Dieser Befehl ist eine Abkürzung für 
- \[
-  \text{\texttt{SEND\_PRIVATE\_MESSAGE | <Sender> | <Nachricht>}}
- \]
- entsprechend schickt der Server
- \[
-  \text{\texttt{PRIVATE\_CHAT\_MESSAGE | <Sender> | <Sender> | <Nachricht>}}
- \] 
- zurück.
- }
- {ECHO | Echooooooo}
+*Number of arguments:* 1. *Valid in the following states:* Once the client has registered a name for itself.
+
+Allows a client to send a private message to itself. This command is a shortcut for
+ 
+ `SEND_PRIVATE_MESSAGE | <Sender> | <Message>`
+ 
+ and correspondingly, the server sends the message in the form:
+ 
+ `PRIVATE_CHAT_MESSAGE | <Sender> | <Sender> | <Message>`
+
+Example:
+
+`ECHO | Echooooooo`
 
 #### LIST_PLAYERS
 
- \clientmessage
- {LIST\_PLAYERS}
- {0}
- {Wenn man auf dem Server vorgestellt ist}
- { Fragt eine Liste der aktuell auf dem Server registrierten Spieler ab. Der Server schickt sie in der Form
- \[
-  \text{\texttt{PLAYERS | <Spieler1> | <Spieler2> | ...}}
- \]
- an den Client. \texttt{SpielerX} ist dabei der Name eines Spielers.
- }
- {LIST\_PLAYERS}
+`LIST_PLAYERS`
+
+*Number of arguments:* 0. *Valid in the following states:* Once the client has introduced itself.
+
+Requests a list of all players registered on the server. The server sends the list in the form
+
+`PLAYERS | <Player1> | <Player2> | ...`
+ 
+ to the client. `<PlayerX>` is the registered name of a player.
+ 
+ Example:
+ 
+ `LIST_PLAYERS`
 
 #### LIST_GAMES
 
- \clientmessage
- {LIST\_GAMES}
- {0}
- {Wenn man auf dem Server registriert ist}
- { Fragt eine Liste der aktuell auf dem Server existierenden Spiele ab. Der Server schickt sie in der Form
- \[
-  \text{\texttt{GAMES | <Spiel1> | <Spiel2> | ...}}
- \]
- an den Client. \texttt{SpielX} ist dabei der Name eines Spiels.
- }
- {LIST\_GAMES}
+`LIST_GAMES`
+
+*Number of arguments:* 0. *Valid in the following states:* Once the client has registered a name for itself.
+
+Requests a list of all games that are active on the server. The server sends the list in the form
+
+`GAMES | <Game1> | <Game2> | ...`
+ 
+ to the client. `<GameX>` is the name of a game.
+ 
+ Example:
+ 
+ `LIST_GAMES`
 
 #### LIST_SCENARIOS
 
- \clientmessage
- {LIST\_SCENARIOS}
- {0}
- {Wenn man auf dem Server registriert ist}
- { Fragt eine Liste der aktuell auf dem Server verfügbaren Szenarien ab, aus denen Spiele erstellt werden können. Der Server schickt sie in der Form
- \[
-  \text{\texttt{SCENARIO | <Szenario1> | <Szenario2> | ...}}
- \]
- an den Client. \texttt{SzenarioX} ist dabei der Name eines Szenarios.
- }
- {LIST\_SCENARIOS}
+`LIST_SCENARIOS`
+
+*Number of arguments:* 0. *Valid in the following states:* Once the client has registered a name for itself.
+
+Requests a list of all scenarios that can be used for game creation. The server sends the list in the form
+
+`SCENARIO | <Scenario1> | <Scenario2> | ...`
+ 
+ to the client, with `<ScenarioX>` being the name of a scenario.
+ 
+ Example:
+ 
+ `LIST_SCENARIOS`
  
 #### LIST_REPLAYS 
+
+`LIST_REPLAYS`
  
- \clientmessage
- {LIST\_REPLAYS}
- {0}
- {Wenn man auf dem Server registriert ist}
- { Fragt eine Liste der aktuell auf dem Server gespeicherten Replays ab. Ein Replay stellt dabei ein Protokoll eines auf dem Server geführten Spiels dar. Replays werden vom Server automatisch nach Spielende erzeugt, sofern ein Spiel nicht vorzeitig beendet wurde.
- \[
-  \text{\texttt{REPLAYS | <Replay1> | <Replay2> | ...}}
- \]
- an den Client. \texttt{ReplayX} ist dabei der Name eines Replays, welcher sich aus dem Name des Spiels und Datum \& Zeit, zu der das Spiel beendet wurde, zusammensetzt. 
- }
- {LIST\_REPLAYS} 
+ *Number of arguments:* 0. *Valid in the following states:* Once the client has registered a name for itself.
+ 
+Requests a list of all replays stored by the server. A replay contains a log of a game hosted by a server. Replays are created automatically at the end of game, unless a game was stopped prematurely. The server sends the list in the form
+
+`REPLAYS | <Replay1> | <Replay2> | ...`
+ 
+ to the client, with `<ReplayX>` being the name of a replay, which consists of the name of the game and the date and time on which the game ended.
+ 
+ Example:
+ `LIST_REPLAYS`
 
 #### LIST_GAME_PLAYERS
 
- \clientmessage
- {LIST\_GAME\_PLAYERS | <Spielname>}
- {1}
- {Wenn man auf dem Server registriert ist}
- { Fragt eine Liste der Spieler ab, die dem angegebenen Spiel beigetreten sind. Existiert kein Spiel mit dem angegebenen Namen, antwortet der Server mit
- \[
-  \text{\texttt{GAME\_NOT\_FOUND | <Spielname>}}
- \]
- Anderenfalls wird die Liste in der Form
- \[
-  \text{\texttt{GAME\_PLAYERS | <Spieler1> | <Spieler2> | ...}}
- \]
- an den Client geschickt. \texttt{SpielerX} ist dabei der Name eines Spielers.
- }
- {LIST\_GAME\_PLAYERS | CoMa-Testspiel}
+`LIST_GAME_PLAYERS | <Name of the game>`
+
+ *Number of arguments:* 1. *Valid in the following states:* Once the client has registered a name for itself.
+ 
+ Requests a list of all players that have joined the specified game. If no game of the specified name exists, the server answers with 
+ 
+ `GAME_NOT_FOUND | <Name of the game>`
+ 
+ Otherwise the server sends the list in the form
+
+`GAME_PLAYERS | <Player1> | <Player2> | ...`
+
+ to the client. `<PlayerX>` is the registered name of a player.
+ 
+ Example:
+ 
+ `LIST_GAME_PLAYERS | Testgame`
 
 #### GET_GAME
 
- \clientmessage
- {GET\_GAME | <Spielname>}
- {1}
- {Wenn man auf dem Server registriert ist}
- { Fragt ein auf dem Server existierendes Spiel ab. Existiert kein Spiel mit dem angegebenen Namen, antwortet der Server mit
- \[
-  \text{\texttt{GAME\_NOT\_FOUND | <Spielname>}}
- \]
- Anderenfalls werden Informationen über das Spiel in der Form
- \[
-  \text{\texttt{GAME | <Szenario> | <Akt. \# Spieler> | <Max. \# Spieler> | <Laufend?>}}
- \]
- geschickt. \texttt{<Szenario>} ist dabei der Name des Szenarios, auf dem das Spiel basiert, \texttt{<Akt. \# Spieler>} und \texttt{<Max. \# Spieler>} sind die aktuelle und die maximale Anzahl Spieler für das Spiel und \texttt{<Laufend?>} gibt an, ob man dem Spiel noch beitreten kann oder nicht.
- }
- {GET\_GAME | CoMa-Testspiel} 
+`GET_GAME | <Name of the game>`
+
+ *Number of arguments:* 1. *Valid in the following states:* Once the client has registered a name for itself.
+
+Requests a game on the server. If no game with the requested name exists, the server answer with
+
+`GAME_NOT_FOUND | <Name of the game>`
+ 
+ Otherwise, information will be given in the form
+ 
+ `GAME | <Scenario> | <Current \# of players> | <Maximal \# of players> | <Running?>`
+ 
+ `<Scenario>` is the name of the scenario the game is based on, `<Current \# of players>` and `<Maximal \# of players>` are the current and maximal numbers of players for the game, and `<Laufend?>` specifies if it the game is already running; in this case, it is no longer possible to join the game.
+ 
+`GET_GAME | Testgame`
 
 #### GET_REPLAY
 
- \clientmessage
- {GET\_REPLAY | <Replayname>}
- {1}
- {Wenn man auf dem Server registriert ist}
- { Fragt ein auf dem Server gespeichertes Replay ab. Existiert das gewünschte Replay nicht, antwortet der Server mit
- \[
-  \text{\texttt{REPLAY\_NOT\_FOUND | <Replayname>}}
- \]
- Anderenfalls wird das Replay in der Form
- \[
-  \text{\texttt{REPLAYS | <Replay-Daten>}}
- \]
- an den Client geschickt, wo bei die \texttt{Replay-Daten} alle vom Server geschickten Spiel-Nachrichten sind, jeweils durch \texttt{||} getrennt. 
- }
- {GET\_REPLAY | Blubb (28.04.10 12:30:18)} 
+`GET_REPLAY | <Name of the replay>`
+
+ *Number of arguments:* 1. *Valid in the following states:* Once the client has registered a name for itself.
+
+Requests a replay on the server. If no replay with the requested name exists, the server answer with
+ 
+ `REPLAY_NOT_FOUND | <Name of the replay>`
+ 
+ Otherwise, the replay is send in the form
+ 
+ `REPLAYS | <Replay-Data>`
+ 
+ to the client, with `Replay-Data` being all messages from the server related to the game, separated by `||`
+ 
+ `GET_REPLAY | Testgame (28.04.10 12:30:18)`
 
 #### CREATE_GAME
 
- \clientmessage
- {CREATE\_GAME | <Szenarioname> | <Spielname> }
- {2}
- {Wenn man auf dem Server registriert ist und gerade nicht spielt}
- { Erzeugt ein neues Spiel mit dem angegebenen Namen basierend auf dem angegebenen Szenario. Der Spielname muss serverweit eindeutig sein, wird der Name schon benutzt, antwortet der Server mit
- \[
-  \text{\texttt{NAME\_ALREADY\_IN\_USE | <Spielname>}}
- \]
- Existiert das angegebene Szenario nicht, wird
- \[
-  \text{\texttt{SCENARIO\_NOT\_FOUND | <Szenarioname>}}
- \] 
- zurückgegeben. Anderenfalls tritt der Client dem erzeugten Spiel bei und es wird an alle registrierten Spieler
- \[
-  \text{\texttt{GAME\_CREATED | <Spielname>}}
- \] 
- geschickt.
- }
- {CREATE\_GAME | Risky Exchange | CoMa-Testspiel} 
+`CREATE_GAME | <Name of the scenario> | <Name of the game>`
+
+ *Number of arguments:* 2. *Valid in the following states:* Once the client has registered a name for itself and is not playing a game.
+ 
+ Creates a new game with specified name based on the given scenario. The game must be unique in the server; if a game of the specified name already exists, the server answers with 
+ 
+ `NAME_ALREADY_IN_USE | <Name of the game>`
+ 
+ If the specified scenario does not exist, the server answers with:
+ 
+ `SCENARIO_NOT_FOUND | <Name of the scenario>`
+ 
+ Otherwise, the game is created and the creating client joins the game; all registered players receive the message
+
+`GAME_CREATED | <Name of the game>`
+ 
+ from the server.
+ 
+ Example:
+ 
+ `CREATE_GAME | Scenario | Test`
 
 #### JOIN_GAME
 
- \clientmessage
- {JOIN\_GAME | <Spielname> }
- {1}
- {Wenn man auf dem Server registriert ist und gerade nicht spielt}
- { Tritt dem Spiel bei, sofern noch Plätze frei sind und das Spiel nicht bereits läuft. Findet der Server kein Spiel mit dem angegebenen Namen, wird
- \[
-  \text{\texttt{GAME\_NOT\_FOUND | <Spielname>}}
- \]
- zurückgegeben. Läuft das Spiel bereits, oder sind alle Plätze besetzt, antwortet der Server mit
- \[
-  \text{\texttt{JOINING\_FAILED | <Spielname>}}
- \] 
- Anderenfalls erhalten der Client und alle weiteren Spieler, die dem Spiel bisher beigetreten sind, die Nachricht
- \[
-  \text{\texttt{PLAYER\_JOINED | <Spielername>}}
- \]
- Sollte ein Spieler zu einem späteren Zeitpunkt ein Spiel verlassen, wird
- \[
-  \text{\texttt{PLAYER\_LEFT | <Spielername>}}
- \] 
- geschickt.
- }
- {JOIN\_GAME | CoMa-Testspiel} 
+`JOIN_GAME | <Name of the game>`
+
+ *Number of arguments:* 1. *Valid in the following states:* Once the client has registered a name for itself and is not playing a game.
+
+Joins the game with the specified game, if there is still room for another player and the game is not already running. If the server cannot find a game with the specified name, he answers with
+
+`GAME_NOT_FOUND | <Name of the game>`
+ 
+ If the game is already running, or the game has already the maximal number of players, the server answers with 
+ 
+ `JOINING_FAILED | <Name of the game>`
+ 
+ Otherwise, the client and all players that already joined the game receive the message 
+ 
+  `PLAYER_JOINED | <Name of the player>`
+ 
+ Should a player at some point leave the game, a message of the form
+ 
+ `PLAYER_LEFT | <Name of player>`
+ 
+ will be sent.
+ 
+ Example:
+ 
+ `JOIN_GAME | Testgame`
 
 #### START_GAME
 
- \clientmessage
- {START\_GAME }
- {0}
- {Wenn man auf dem Server registriert ist und ein Spiel erstellt hat}
+`START_GAME`
+
+ *Number of arguments:* 0. *Valid in the following states:* Once the client has registered a name for itself and has created a game.
+ 
  { Startet ein Spiel, was man zuvor erstellt hat. Weitere Spieler können dem Spiel dann nicht mehr beitreten. Läuft das Spiel bereits, anwortet der Server mit
  \[
   \text{\texttt{GAME\_IS\_ALREADY\_RUNNING}}
@@ -381,10 +393,10 @@ Example:
 
 #### GAME_CHOICE
 
- \clientmessage
- {GAME\_CHOICE | <Art der Auswahl> | <Auswahl>}
- {2}
- {Wenn man ein Spiel spielt}
+`GAME_CHOICE | <Type of choice> | <Choice> `
+
+ *Number of arguments:* 2. *Valid in the following states:* When playing a game.
+
  { Trifft eine vom Server mit
  \[
   \text{\texttt{CHOOSE | <Art der Auswahl> | <Anzahl> | <Option1> | <Option2> | ...}}
@@ -414,11 +426,11 @@ Example:
  {GAME\_CHOICE | PROGRAMMING | 0,8,3,4,5} 
  
 #### GET_SCENARIO
+
+`GET_SCENARIO | <Name of the scenario>`
  
- \clientmessage
- {GET\_SCENARIO | <Szenarioname>}
- {1}
- {Wenn man auf dem Server registriert ist}
+  *Number of arguments:* 1. *Valid in the following states:* Once the client has registered a name for itself.
+ 
  { Fragt ein auf dem Server existierendes Szenario ab. Existiert kein Szenario mit dem angegebenen Namen, antwortet der Server mit
  \[
   \text{\texttt{SCENARIO\_NOT\_FOUND | <Szenarioname>}}
@@ -584,50 +596,18 @@ Wird ein Spieler zerstört (d.h. sein Roboter ist zerstört und er hat keine Leb
 % 				 LASER\_FIRE,
 % 				 TOUCH\_CHECKPOINT,
 % 		\item Client Messages
-% 		INTRODUCE,
-% 		CLOSE\_CONNECTION,
-% 		REGISTER,
-% 		LIST\_GAMES,
-% 		LIST\_PLAYERS,
-% 		LIST\_REPLAYS,
-% 		LIST\_SCENARIOS,
-% 		LIST\_GAME\_PLAYERS,
-% 		GET\_GAME,
-% 		GET\_REPLAY,
-% 		GET\_SCENARIO,
-% 		SEND\_PRIVATE\_MESSAGE,
-% 		ECHO,
-% 		SEND\_SERVER\_MESSAGE,
-% 		CREATE\_GAME,
-% 		START\_GAME,
-% 		JOIN\_GAME,
 % 		GAME\_CHOICE,
-% 		SEND\_GAME\_MESSAGE,
 % 		CHOOSE,
 % 		    ANNOUNCE\_POWER\_DOWN,
 %         PROGRAMMING(Visibility.RESULT\_ONLY),
 %         REMAIN\_POWERED\_DOWN,
 %         SPAWN\_TILE,
 %         SPAWN\_DIRECTION;
-% 	\item m\"ogliche Antworten darauf
-% 	INTRODUCTION\_SUCCESSFUL,
-% 	SERVER\_ACCESS\_DENIED,
-% 	CONNECTION\_CLOSED, "As requested by client.",
-% 	REGISTRATION\_SUCCESSFUL,
-% 	NAME\_ALREADY\_IN\_USE,
-% 	REGISTRATION\_DENIED,
-% 	GAMES,
-% 	PLAYERS,
-% 	REPLAYS,
-% 	SCENARIOS,
-% 	GAME\_NOT\_FOUND,
-% 	GAME\_PLAYERS,
+
+
 % 	GAME,
-% 	REPLAY\_NOT\_FOUND,
 % 	REPLAY,
-% 	SCENARIO\_NOT\_FOUND,
 % 	SCENARIO,
-% 	PLAYER\_NOT\_FOUND,
 % 	GAME\_CREATED,
 % 	GAME\_IS\_ALREADY\_RUNNING,
 % 	JOINING\_FAILED,
@@ -637,3 +617,11 @@ Wird ein Spieler zerstört (d.h. sein Roboter ist zerstört und er hat keine Leb
 % 	INCORRECT\_NUMBER\_OF\_PARAMETERS,
 % 	NOT\_WAITING\_FOR\_THIS\_CHOICE,
 % 	CHOSEN,
+
+
+
+% 	INTRODUCTION\_SUCCESSFUL,
+% 	SERVER\_ACCESS\_DENIED,
+
+% 	REGISTRATION\_SUCCESSFUL,
+% 	NAME\_ALREADY\_IN\_USE,
