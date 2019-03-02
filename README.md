@@ -65,18 +65,15 @@ The server accepts the following message types from the client:
   
 In the following, all of these message types will be explained in detail. If we are talking about strings, we assume that the character `|` is forbidden.
 
+#### INTRODUCE
+
 `INTRODUCE | <Client name> | <Passwort>`
 
-Number of arguments: 1-2 
-
-Valid in the following states: If an introduction has not happened yet 
+*Number of arguments:* 1-2. *Valid in the following states:* If an introduction has not happened yet.
  
-Introduces a client to server, with '<Client name>' being an arbitrary string
-  \clientmessage
-  {INTRODUCE | <Clienttyp> | <Passwort>}
-  {1-2}
-  {Wenn noch nicht vorgestellt}
-  { Stellt euren Client dem Server vor. Der Parameter \texttt{<Clienttyp>} ist ein beliebiger String, der euren Clienten beschreibt, z.B. \texttt{Client der Gruppe 107}. Es können mehrere Clienten des selben Typs gleichzeitig mit dem Server verbunden sein. Der Parameter \texttt{<Passwort>} ist optional und muss nur angegeben werden, wenn der Zugang zum Server durch ein Passwort geschützt ist. Das Passwort muss die korrekte Groß- \& Kleinschreibung aufweisen, Leerzeichen am Anfang und Ende des Passwortes werden ignoriert. Der Server sendet
+Introduces a client to server, with '<Client name>' being an arbitrary string that tells the server about the type of the AI (e.g. Jane's AI). 
+ 
+Es können mehrere Clienten des selben Typs gleichzeitig mit dem Server verbunden sein. Der Parameter \texttt{<Passwort>} ist optional und muss nur angegeben werden, wenn der Zugang zum Server durch ein Passwort geschützt ist. Das Passwort muss die korrekte Groß- \& Kleinschreibung aufweisen, Leerzeichen am Anfang und Ende des Passwortes werden ignoriert. Der Server sendet
     \[
      \text{\texttt{INTRODUCTION\_SUCCESSFUL}}
     \]
@@ -86,7 +83,9 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
     \]
     Dieser Fall tritt nur dann ein, wenn der Server passwortgeschützt ist und ein falsches Passwort angegeben wurde. }
   {INTRODUCE | Client der Gruppe 001\\INTRODUCE | Client X | Furchtbar geheimes Passwort}
-  
+
+#### REGISTER
+
  \clientmessage
  {REGISTER | <Spielername>}
  {1}
@@ -102,6 +101,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  Eine Liste aktuell schon vergegeben Namen könnt ihr mit \texttt{LIST\_PLAYERS} erhalten.
  }
  {REGISTER | Marvin}
+
+#### CLOSE_CONNECTION
 
   \clientmessage
   {CLOSE\_CONNECTION}
@@ -119,6 +120,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
   }
   {CLOSE\_CONNECTION}
 
+#### SEND_SERVER_MESSAGE
+
  \clientmessage
  {SEND\_SERVER\_MESSAGE | <Nachricht>}
  {1}
@@ -131,6 +134,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  }
  {SEND\_SERVER\_MESSAGE | Hallo Welt!}
 
+#### SEND_GAME_MESSAGE
+
  \clientmessage
  {SEND\_GAME\_MESSAGE | <Nachricht>}
  {1}
@@ -142,6 +147,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  an diese Spieler weiter.
  }
  {SEND\_GAME\_MESSAGE | Hallo Welt!}
+
+#### SEND_PRIVATE_MESSAGE
 
  \clientmessage
  {SEND\_PRIVATE\_MESSAGE | <Spielername> | <Nachricht>}
@@ -159,6 +166,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  }
  {SEND\_PRIVATE\_MESSAGE | Marvin | Don't panic!}
 
+#### ECHO
+
  \clientmessage
  {ECHO | <Nachricht>}
  {1}
@@ -175,6 +184,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  }
  {ECHO | Echooooooo}
 
+#### LIST_PLAYERS
+
  \clientmessage
  {LIST\_PLAYERS}
  {0}
@@ -186,6 +197,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  an den Client. \texttt{SpielerX} ist dabei der Name eines Spielers.
  }
  {LIST\_PLAYERS}
+
+#### LIST_GAMES
 
  \clientmessage
  {LIST\_GAMES}
@@ -199,6 +212,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  }
  {LIST\_GAMES}
 
+#### LIST_SCENARIOS
+
  \clientmessage
  {LIST\_SCENARIOS}
  {0}
@@ -211,6 +226,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  }
  {LIST\_SCENARIOS}
  
+#### LIST_REPLAYS 
+ 
  \clientmessage
  {LIST\_REPLAYS}
  {0}
@@ -222,6 +239,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  an den Client. \texttt{ReplayX} ist dabei der Name eines Replays, welcher sich aus dem Name des Spiels und Datum \& Zeit, zu der das Spiel beendet wurde, zusammensetzt. 
  }
  {LIST\_REPLAYS} 
+
+#### LIST_GAME_PLAYERS
 
  \clientmessage
  {LIST\_GAME\_PLAYERS | <Spielname>}
@@ -239,6 +258,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  }
  {LIST\_GAME\_PLAYERS | CoMa-Testspiel}
 
+#### GET_GAME
+
  \clientmessage
  {GET\_GAME | <Spielname>}
  {1}
@@ -255,6 +276,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  }
  {GET\_GAME | CoMa-Testspiel} 
 
+#### GET_REPLAY
+
  \clientmessage
  {GET\_REPLAY | <Replayname>}
  {1}
@@ -270,6 +293,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  an den Client geschickt, wo bei die \texttt{Replay-Daten} alle vom Server geschickten Spiel-Nachrichten sind, jeweils durch \texttt{||} getrennt. 
  }
  {GET\_REPLAY | Blubb (28.04.10 12:30:18)} 
+
+#### CREATE_GAME
 
  \clientmessage
  {CREATE\_GAME | <Szenarioname> | <Spielname> }
@@ -290,6 +315,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  geschickt.
  }
  {CREATE\_GAME | Risky Exchange | CoMa-Testspiel} 
+
+#### JOIN_GAME
 
  \clientmessage
  {JOIN\_GAME | <Spielname> }
@@ -315,6 +342,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  }
  {JOIN\_GAME | CoMa-Testspiel} 
 
+#### START_GAME
+
  \clientmessage
  {START\_GAME }
  {0}
@@ -338,6 +367,8 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  Nachricht. Die Scenario-Daten haben dieselbe Form wie bei \texttt{GET\_SCENARIO}. 
  }
  {START\_GAME} 
+
+#### GAME_CHOICE
 
  \clientmessage
  {GAME\_CHOICE | <Art der Auswahl> | <Auswahl>}
@@ -371,7 +402,7 @@ Introduces a client to server, with '<Client name>' being an arbitrary string
  }
  {GAME\_CHOICE | PROGRAMMING | 0,8,3,4,5} 
  
-\clearpage 
+#### GET_SCENARIO
  
  \clientmessage
  {GET\_SCENARIO | <Szenarioname>}
