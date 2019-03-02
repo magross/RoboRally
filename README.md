@@ -45,23 +45,23 @@ where `<Min>` and `<Max>` are the minimal and maximal number of parameters for t
 ## Messages to the server
 The server accepts the following message types from the client:
   - [`INTRODUCE`](https://github.com/magross/RoboRally/blob/master/README.md#introduce)
-  - `REGISTER`
-  - `SEND_SERVER_MESSAGE`
-  - `SEND_GAME_MESSAGE`
-  - `SEND_PRIVATE_MESSAGE`
-  - `ECHO`
-  - `LIST_GAME_PLAYERS`
-  - `LIST_GAMES`
-  - `LIST_PLAYERS`
-  - `LIST_REPLAYS`
-  - `LIST_SCENARIOS`
-  - `GET_GAME`
-  - `GET_REPLAY`
-  - `GET_SCENARIO`
-  - `CREATE_GAME`
-  - `JOIN_GAME`
-  - `START_GAME`
-  - `CLOSE_CONNECTION`
+  - [`REGISTER`](https://github.com/magross/RoboRally/blob/master/README.md#register)
+  - [`SEND_SERVER_MESSAGE`](https://github.com/magross/RoboRally/blob/master/README.md#send_server_message)
+  - [`SEND_GAME_MESSAGE`](https://github.com/magross/RoboRally/blob/master/README.md#send_game_message)
+  - [`SEND_PRIVATE_MESSAGE`](https://github.com/magross/RoboRally/blob/master/README.md#send_private_message)
+  - [`ECHO`](https://github.com/magross/RoboRally/blob/master/README.md#echo)
+  - [`LIST_GAME_PLAYERS`](https://github.com/magross/RoboRally/blob/master/README.md#list_game_players)
+  - [`LIST_GAMES`](https://github.com/magross/RoboRally/blob/master/README.md#list_games)
+  - [`LIST_PLAYERS`](https://github.com/magross/RoboRally/blob/master/README.md#list_players)
+  - [`LIST_REPLAYS`](https://github.com/magross/RoboRally/blob/master/README.md#list_replays)
+  - [`LIST_SCENARIOS`](https://github.com/magross/RoboRally/blob/master/README.md#list_scenarios)
+  - [`GET_GAME`](https://github.com/magross/RoboRally/blob/master/README.md#get_game)
+  - [`GET_REPLAY`](https://github.com/magross/RoboRally/blob/master/README.md#get_replay)
+  - [`GET_SCENARIO`](https://github.com/magross/RoboRally/blob/master/README.md#get_scenario)
+  - [`CREATE_GAME`](https://github.com/magross/RoboRally/blob/master/README.md#create_game)
+  - [`JOIN_GAME`](https://github.com/magross/RoboRally/blob/master/README.md#join_game)
+  - [`START_GAME`](https://github.com/magross/RoboRally/blob/master/README.md#start_game)
+  - [`CLOSE_CONNECTION`](https://github.com/magross/RoboRally/blob/master/README.md#close_connection)
   
 In the following, all of these message types will be explained in detail. If we are talking about strings, we assume that the character `|` is forbidden, and whitespace in the beginning and end is ignored.
 
@@ -100,7 +100,7 @@ Registers a name for your client with the server that the server uses to identif
   
  `REGISTRATION_SUCCESSFUL`
  
- A list of currently used names can be obtained by `LIST_PLAYERS`.
+ A list of currently used names can be obtained by [`LIST_PLAYERS`](https://github.com/magross/RoboRally/blob/master/README.md#list_players).
  
  Example:
  
