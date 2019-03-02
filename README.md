@@ -26,7 +26,7 @@ where `<Welcome message>` is any string. This message is followed by the message
 
 `AWAITING_REGISTRATION`
 
-After receiving the `AWAITING_REGISTRATION` message, the client can introduce himself and register a name, as described in section MESSAGES TO THE SERVER.
+After receiving the `AWAITING_REGISTRATION` message, the client can introduce himself and register a name, as described in section [https://github.com/magross/RoboRally/blob/master/README.md#messages-to-the-server](Messages to the server).
 
 If the server does not recognize the type of a message (i.e., the first part of the message), he will reply by a message of the form
 
