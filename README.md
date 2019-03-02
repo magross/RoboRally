@@ -100,7 +100,7 @@ Registers a name for your client with the server that the server uses to identif
   
  `REGISTRATION_SUCCESSFUL`
  
- A list of currently taken names can be obtained by `LIST_PLAYERS`.
+ A list of currently used names can be obtained by `LIST_PLAYERS`.
  
  Example:
  
@@ -108,11 +108,13 @@ Registers a name for your client with the server that the server uses to identif
 
 #### CLOSE_CONNECTION
 
+`CLOSE_CONNECTION`
+
 *Number of arguments:* 0. *Valid in the following states:* Always.
 
 Closes the connection to the server. If the client is participating in a game, the client will leave the game and the players receive a message of the form:
 
-`PLAYER\_LEFT | <Name of the leaving player>`
+`PLAYER_LEFT | <Name of the leaving player>`
 
 The client receives the message
 
@@ -122,55 +124,60 @@ The name used by the client will be made available again.
 
 Example:
 
-`CLOSE\_CONNECTION
+`CLOSE_CONNECTION`
 
 #### SEND_SERVER_MESSAGE
 
- \clientmessage
- {SEND\_SERVER\_MESSAGE | <Nachricht>}
- {1}
- {Sobald ein Name registriert wurde}
- { Schickt die spezifizierte Nachricht an alle auf dem Server registrierten Spieler. Der Server schickt sie in der Form 
- \[
-  \text{\texttt{SERVER\_CHAT\_MESSAGE | <Sender> | <Nachricht>}}
- \]
- an alle Spieler weiter.
- }
- {SEND\_SERVER\_MESSAGE | Hallo Welt!}
+`SEND_SERVER_MESSAGE | <Message>`
+
+*Number of arguments:* 1. *Valid in the following states:* Once the client has registered a name for itself.
+
+Sends the string `<Message>` to all other players on the server. The server sends these in the form
+
+`SERVER_CHAT_MESSAGE | <Sender> | <Message>`
+
+to all players.
+
+Example:
+`SEND_SERVER_MESSAGE | Hello World!`
 
 #### SEND_GAME_MESSAGE
 
- \clientmessage
- {SEND\_GAME\_MESSAGE | <Nachricht>}
- {1}
- {Wenn man ein Spiel spielt}
- { Schickt die spezifizierte Nachricht an alle Spieler, die gerade mit dem Client spielen. Der Server schickt sie in der Form 
- \[
-  \text{\texttt{GAME\_CHAT\_MESSAGE | <Sender> | <Nachricht>}}
- \]
- an diese Spieler weiter.
- }
- {SEND\_GAME\_MESSAGE | Hallo Welt!}
+`SEND_GAME_MESSAGE | <Message>`
+
+*Number of arguments:* 1. *Valid in the following states:* If a client is playing a game.
+
+Sends the string `<Message>` to all other players in the same game. The server sends these in the form 
+
+`GAME_CHAT_MESSAGE | <Sender> | <Message>`
+ 
+to all players.
+
+Example:
+`SEND_GAME_MESSAGE | Hello World!`
 
 #### SEND_PRIVATE_MESSAGE
 
- \clientmessage
- {SEND\_PRIVATE\_MESSAGE | <Spielername> | <Nachricht>}
- {2}
- {Wenn man auf dem Server registriert ist}
- { Schickt die spezifizierte Nachricht an den Spieler mit dem angegebenen Namen. Ist auf dem Server kein Spieler mit diesem Namen registriert, antwortet der Server mit
- \[
-  \text{\texttt{PLAYER\_NOT\_FOUND}}
- \]
- Anderenfalls leitet der Server die Nachricht in der Form
- \[
-  \text{\texttt{PRIVATE\_CHAT\_MESSAGE | <Sender> | <Empfänger> | <Nachricht>}}
- \]
- an Sender und Emfänger weiter.
- }
- {SEND\_PRIVATE\_MESSAGE | Marvin | Don't panic!}
+`SEND_PRIVATE_MESSAGE | <Player name> | <Message>`
+
+*Number of arguments:* 2. *Valid in the following states:* Once the client has registered a name for itself.
+
+Sends the string `<Message>` to the player with the name `<Player name>`. If this name is not used on the server, the server answers with
+
+`PLAYER_NOT_FOUND`
+
+Otherwise the server sends the message in the form 
+
+`PRIVATE_CHAT_MESSAGE | <Sender> | <Receiver> | <Message>`
+
+to both sender and receiver.
+
+Example:
+
+`SEND_PRIVATE_MESSAGE | Marvin | Don't panic!` 
 
 #### ECHO
+
 
  \clientmessage
  {ECHO | <Nachricht>}
