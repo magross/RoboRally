@@ -71,18 +71,22 @@ In the following, all of these message types will be explained in detail. If we 
 
 *Number of arguments:* 1-2. *Valid in the following states:* If an introduction has not happened yet.
  
-Introduces a client to server, with `<Client name>` being an arbitrary string that tells the server about the type of the AI (e.g. Jane's AI). 
+Introduces a client to server, with `<Client name>` being an arbitrary string that tells the server about the type of the AI (e.g. Jane's AI). It is 
  
 Es können mehrere Clienten des selben Typs gleichzeitig mit dem Server verbunden sein. Der Parameter \texttt{<Passwort>} ist optional und muss nur angegeben werden, wenn der Zugang zum Server durch ein Passwort geschützt ist. Das Passwort muss die korrekte Groß- \& Kleinschreibung aufweisen, Leerzeichen am Anfang und Ende des Passwortes werden ignoriert. Der Server sendet
-    \[
-     \text{\texttt{INTRODUCTION\_SUCCESSFUL}}
-    \]
-    wenn die Vorstellung erfolgreich verlaufen ist, anderenfalls sendet er: 
-    \[
-     \text{\texttt{SERVER\_ACCESS\_DENIED}}
-    \]
-    Dieser Fall tritt nur dann ein, wenn der Server passwortgeschützt ist und ein falsches Passwort angegeben wurde. }
-  {INTRODUCE | Client der Gruppe 001\\INTRODUCE | Client X | Furchtbar geheimes Passwort}
+
+`INTRODUCTION\_SUCCESSFUL`
+
+if the introduction was successful, otherwise he sends:
+
+`SERVER_ACCESS_DENIED`
+
+This can only happen if the server is password protected and a wrong password was given.
+
+Examples:
+
+`INTRODUCE | Client of group 001`
+`INTRODUCE | Client X | abcde`
 
 #### REGISTER
 
