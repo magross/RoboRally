@@ -4,8 +4,7 @@ This project provides a server that can host RoboRally games, enforce the game r
 ## Server
 The jar-file of the server can be found under [dist/RoboRally.jar](dist/RoboRally.jar). To run this server, it is sufficient to type `java -jar RoboRally.jar`. The server accepts various optional command line parameters:
  
-  Den Server erhaltet ihr über die CoMa-Homepage \url{http://www.math.tu-berlin.de/CoMa/coma2.SS10/} oder über das CoMa-Forum \url{http://www.math.tu-berlin.de/CoMa/forum/cgi-bin/yabb2/YaBB.pl}. Der Server besteht nur aus einer einzigen Datei, die ihr je nach System per Doppelklick oder per Kommandozeile mit starten könnt. Beim Aufruf über die Kommandozeile könnt ihr einige optionale Parameter festlegen:
-  
+ 
   \begin{table}[h]
    \centering
    \begin{tabular}{|l|l|l|}    
@@ -31,18 +30,27 @@ Calling the server without arguments is equivalent to the call: `java -jar RoboR
 The communication between server and clients is based on a custom protocol of text messages send via TCP. A message consists of a string with a line break at the end, and the message itself consists of one or multiple parts separated by the character `|`. The first part determines the type of the message, and all subsequent parts are parameters that depend on the type of the message.
 
 After a connection has been established, the server sends a welcome message to the client that has the following form:
+
 `WELCOME | <Welcome message>`
+
 followed by the message
+
 `AWAITING_REGISTRATION`
 
 After receiving the `AWAITING\_REGISTRATION}>` message, the client can introduce himself and register a name, as described in section MESSAGES TO THE SERVER.
 
 If the server does not recognize the type of a message (i.e., the first part of the message), he will reply by a message of the form
+
 `UNKNOWN_MESSAGE | <First part of the client's message>`  
+
 If the client's message is recognized, but not fitting the current state (e.g. the client tries to make a move in a game without having joined a game in the first place), the server will send a message of the form:
+
 `MESSAGE_NOT_ALLOWED_IN_CURRENT_STATE | <First part of the client's message>`  
+
 If the message has too few or too many parameters for its type, the server will reply by
+
 `INCORRECT_NUMBER_OF_PARAMETERS | <Min> | <Max> | <Send>`  
+
 where `<Min>` and `<Max>` are the minimal and maximal number of parameters for the type of message, and `<Send>` is the number of parameters that the client used.
 
 ## Messages to the server
@@ -65,6 +73,7 @@ The server accepts the following message types from the client:
   - `JOIN_GAME`
   - `START_GAME`
   - `CLOSE_CONNECTION`
+  
 In the following, we will explain all of these message types in detail.
   \clientmessage
   {INTRODUCE | <Clienttyp> | <Passwort>}
