@@ -403,29 +403,29 @@ Used to make a choice that was requested by the server in form of a message of t
 
 `CHOOSE | <Type of choice> | <Number of picks> | <Option1> | <Option2> | ...`
  
- `<Type of choice>` has to be identical in both messages. <Auswahl>} besteht aus einer durch Kommata getrennten Liste von Zahlen. Die Anzahl der Zahlen in dieser Liste muss der \texttt{<Anzahl>} aus der \texttt{CHOOSE}-Nachricht entsprechen. Die Zahlen werden als Indizes der in der Server-Nachricht gelisteten Optionen interpretiert, wobei 0 der Index der ersten Option ist. Dementsprechend dürfen die Zahlen in der Auswahlliste nur ganze Zahlen zwischen 0 und \# Optionen$-1$ sein; außerdem darf keine Zahl doppelt vorkommen. Der Server gibt die Wahl des Spielers mittels
- \[
-  \text{\texttt{CHOSEN | <Spielername> | <Art der Auswahl> | <Gewählte Objekte>}}
- \]
- bekannt. Trifft ein Client eine ungültige Wahl, ignoriert der Server diese und wählt stattdessen zufällig. Antwortet der Client nicht innerhalb einer serverspezifischen Frist auf eine \texttt{CHOOSE}-Nachricht, trifft der Server eine zufällige Auswahl und sendet
- \[
-  \text{\texttt{TIMEOUT | <Spielername> | <Art der Auswahl> }}
- \]
- an alle Spieler. Erkennt der Server die vom Client angegebene \texttt{<Art der Auswahl>} nicht, antwortet er mit 
- \[
-  \text{\texttt{UNKNOWN\_CHOICE}}
- \]
- Erkennt der Server die Art der Auswahl und erwartet sie zu dem aktuellen Zeitpunkt aber nicht, schickt er
- \[
-  \text{\texttt{NOT\_WAITING\_FOR\_THIS\_CHOICE}}
- \]
- zurück. Enthält \texttt{<Auswahl>} etwas ungültiges (z.B. Zeichenketten), wird 
- \[
-  \text{\texttt{ILLEGAL\_CHOICE}}
- \]
- zurückgegeben.
- }
- {GAME\_CHOICE | PROGRAMMING | 0,8,3,4,5} 
+ `<Type of choice>` has to be identical in both messages. `<Number of picks>` is the number of elements to be picked from the options. The `<Choice>` string is a comma-separated list of numbers, with each number referring to an option from the options that the server provided. Consequently, the number of indices in this list has to be equal to `<Number of picks>`. The index of the first option is 0, and the index of the last option is `number of options - 1`. Numbers may not appear twice in this list. The server braodcasts the choice of a player by 
+
+`CHOSEN | <Name of player> | <Type of choice> | <Chosen objects>`
+
+If a client makes an invalid choice, the server ignores this choice and chooses randomly instead. If a client does not answer within the timeouts of the server, the server chooses randomly as well and sends
+
+`TIMEOUT | <Name of player> | <Type of choice> `
+
+to all players. If the player does not recognize the `<Type of choice>` the client used, he will respond with 
+ 
+`UNKNOWN_CHOICE`
+
+If the server recognized the `<Type of choice>`, but it is send at an inappropriate time by the client, the server sends
+
+`NOT_WAITING_FOR_THIS_CHOICE`
+ 
+ If `<Choice>` contains something invalid (for example, strings), the server sends
+ 
+ `ILLEGAL\_CHOICE`
+ 
+ Example:
+ 
+ `GAME\_CHOICE | PROGRAMMING | 0,8,3,4,5`
  
 #### GET_SCENARIO
 
