@@ -63,7 +63,7 @@ The server accepts the following message types from the client:
   - `START_GAME`
   - `CLOSE_CONNECTION`
   
-In the following, all of these message types will be explained in detail. If we are talking about strings, we assume that the character `|` is forbidden.
+In the following, all of these message types will be explained in detail. If we are talking about strings, we assume that the character `|` is forbidden, and whitespace in the beginning and end is ignored.
 
 #### INTRODUCE
 
@@ -71,9 +71,7 @@ In the following, all of these message types will be explained in detail. If we 
 
 *Number of arguments:* 1-2. *Valid in the following states:* If an introduction has not happened yet.
  
-Introduces a client to server, with `<Client name>` being an arbitrary string that tells the server about the type of the AI (e.g. Jane's AI). It is 
- 
-Es können mehrere Clienten des selben Typs gleichzeitig mit dem Server verbunden sein. Der Parameter \texttt{<Passwort>} ist optional und muss nur angegeben werden, wenn der Zugang zum Server durch ein Passwort geschützt ist. Das Passwort muss die korrekte Groß- \& Kleinschreibung aufweisen, Leerzeichen am Anfang und Ende des Passwortes werden ignoriert. Der Server sendet
+Introduces a client to server, with `<Client name>` being an arbitrary string that tells the server about the type of the AI (e.g. Jane's AI). It is possible for two or more clients to use the same string. The parameter `<Passwort>` is optional and needs only to be given if access to the server is password protected. The password is case-sensitive, whitespace in the beginning and end is ignored. The server sends
 
 `INTRODUCTION\_SUCCESSFUL`
 
@@ -85,44 +83,46 @@ This can only happen if the server is password protected and a wrong password wa
 
 Examples:
 
-`INTRODUCE | Client of group 001`
+`INTRODUCE | Client of group 001`, 
 `INTRODUCE | Client X | abcde`
 
 #### REGISTER
 
- \clientmessage
- {REGISTER | <Spielername>}
- {1}
- {Nach der Vorstellung, solange noch kein Name registriert wurde}
- { Registriert beim Server einen Namen für euren Clienten, der vom Server benutzt wird, euch zu identifizieren. Andere Clienten können euch mit Hilfe dieses Namens Nachrichten schicken, wenn sie mit demselben Server verbunden sind. Dieser Name muss innerhalb des Servers eindeutig sein; benutzt ein anderer Client bereits den von euch gewünschten Namen, antwortet der Server mit
- \[
-  \text{\texttt{NAME\_ALREADY\_IN\_USE}}
- \]
- Wird der Name noch nicht benutzt, antwortet der Server mit
- \[
-  \text{\texttt{REGISTRATION\_SUCCESSFUL}}
- \] 
- Eine Liste aktuell schon vergegeben Namen könnt ihr mit \texttt{LIST\_PLAYERS} erhalten.
- }
- {REGISTER | Marvin}
+`REGISTER | <Name>`
+
+*Number of arguments:* 1. *Valid in the following states:* After introduction, if no name has been registered yet.
+ 
+Registers a name for your client with the server that the server uses to identify you. Other clients that are connected to this server can use this name to send you messages. The name you are registering needs to be server-unique; if `Name` is already in use, the server will reply with
+
+`NAME_ALREADY_IN_USE`
+ 
+ If your name is still available, the server answers with
+  
+ `REGISTRATION_SUCCESSFUL`
+ 
+ A list of currently taken names can be obtained by `LIST_PLAYERS`.
+ 
+ Example:
+ 
+ 'REGISTER | Marvin'
 
 #### CLOSE_CONNECTION
 
-  \clientmessage
-  {CLOSE\_CONNECTION}
-  {Keine}
-  {Immer}
-  {Trennt die Verbindung mit dem Server. Nimmt der Client gerade an einem Spiel teil, verlässt der Client das Spiel und die Spieler erhalten eine Nachricht der Form:
-    \[
-     \text{\texttt{PLAYER\_LEFT | <Spielername>}}
-    \]
-    Der Client selbst erhält die Nachricht
-    \[
-     \text{\texttt{CONNECTION\_CLOSED | As requested by client.}}
-    \]
-    Der vom Client benutzte Name wird vom Server wieder zur Benutzung freigegeben.
-  }
-  {CLOSE\_CONNECTION}
+*Number of arguments:* 0. *Valid in the following states:* Always.
+
+Closes the connection to the server. If the client is participating in a game, the client will leave the game and the players receive a message of the form:
+
+`PLAYER\_LEFT | <Name of the leaving player>`
+
+The client receives the message
+
+`CONNECTION_CLOSED | As requested by client.`
+
+The name used by the client will be made available again.
+
+Example:
+
+`CLOSE\_CONNECTION
 
 #### SEND_SERVER_MESSAGE
 
