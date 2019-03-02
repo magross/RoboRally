@@ -5,45 +5,15 @@ This project provides a server that can host RoboRally games, enforce the game r
 The jar-file of the server can be found under [dist/RoboRally.jar](dist/RoboRally.jar). To run this server, it is sufficient to type `java -jar RoboRally.jar`. The server accepts various optional command line parameters:
  
 - `-c` or `--connections`: Sets the maximum number of clients that the server accepts. The default is 50.
-- `-x` or `--password`: Sets a password that clients have to provide at registration. If the password is set to "", the clients do not have to provide a password. The default is "".
+- `-x` or `--password`: Sets a password that clients have to provide at registration. If the password is set to "", the clients do not have to provide a password. Notice that whitespace in the beginning and end of the password will be ignored; furthermore, the password is case-sensitive and may not contain the character `|`. The default is "".
+- `-m` or `--admin`: Sets an admin-password, with which registered players can get admin rights. Without this password, no player can become admin. Notice that whitespace in the beginning and end of the password will be ignored; furthermore, the password is case-sensitive and may not contain the character `|`. The default is "".
 - `-p` or `--port`: Sets the port that the server uses to listen for clients. The default is 8888.
 - `-r` or `--replay`: Specifies the folder in which the server looks for replays and saves replays. The default is "replay".
 - `-s` or `--scenario`: Specifies the folder in which the server looks for scenarios. The default is "scenario".
 - `-a` or `--ai`: Specifies the folder in which the server looks for AIs. An AI needs to be packed in a JAR file containing a class with static methods `createAIClient(String, String, int, String, String, String, String)` and `getAiProfiles()`. See also section [https://github.com/magross/RoboRally/blob/master/README.md#ais](AI). The default is "ai".
-
-
-        UnflaggedOption opt6 = new UnflaggedOption("message").setStringParser(JSAP.STRING_PARSER).setDefault("Welcome!").setRequired(false).setGreedy(true);
-        opt6.setHelp("Sets the welcome message of the server.");
-
-        FlaggedOption opt8 = new FlaggedOption("master-password").setStringParser(JSAP.STRING_PARSER).setDefault("").setRequired(false).setShortFlag('m').setLongFlag("admin");
-        opt8.setHelp("Sets the master-passwort, with which registered players can get admin rights. Without this password, no player can become admin.");
-
-        Switch sw1 = new Switch("statistics").setLongFlag("statistics");
-        sw1.setHelp("Specifies whether the server saves statistics to replays (e.g. when which player arrived with his robot).");
-
-        Switch sw2 = new Switch("help").setShortFlag('h').setLongFlag("help");
-        sw2.setHelp("Shows this help.");
- 
-  \begin{table}[h]
-   \centering
-   \begin{tabular}{|l|l|l|}    
-    \hline
-     & Bedeutung & Standardwert\\
-    \hline
-    1. Parameter & Port, auf dem der Server auf Clienten wartet & 4444\\
-    \hline
-    2. Parameter & Maximale Anzahl gleichzeitiger Verbindungen & 50\\
-    \hline
-    3. Parameter & Passwort für die Clienten & Keins\\
-    \hline
-    4. Parameter & Begrüßungsnachricht des Server an die Clienten & Willkommen!\\
-    \hline   
-   \end{tabular}
-  \end{table} 
-  
-  Wird als Passwort "" angegeben, wird von den Clienten kein Passwort gefordert. Leerzeichen zu Beginn und am Ende des Passworts werden ignoriert, die Groß- \& Kleinschreibung wird aber beachtet. 
-  
-Calling the server without arguments is equivalent to the call: `java -jar RoboRally.jar 4444 50 "" Welcome!`  
+- `-h` or `--help`: Shows a list of these optional command line parameters. 
+- `--statistics`: If this is passed to the server, the server will add statistics to replays (e.g. when which player arrived with his robot).
+- Arguments without flags will be used as the welcome message.
   
 ## Communication with clients  
 The communication between server and clients is based on a custom protocol of text messages send via TCP. A message consists of a string with a line break at the end, and the message itself consists of one or multiple parts separated by the character `|`. The first part determines the type of the message, and all subsequent parts are parameters that depend on the type of the message.
@@ -56,7 +26,7 @@ where `<Welcome message>` is any string. This message is followed by the message
 
 `AWAITING_REGISTRATION`
 
-After receiving the `AWAITING\_REGISTRATION` message, the client can introduce himself and register a name, as described in section MESSAGES TO THE SERVER.
+After receiving the `AWAITING_REGISTRATION` message, the client can introduce himself and register a name, as described in section MESSAGES TO THE SERVER.
 
 If the server does not recognize the type of a message (i.e., the first part of the message), he will reply by a message of the form
 
