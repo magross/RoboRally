@@ -10,10 +10,10 @@ The jar-file of the server can be found under [dist/RoboRally.jar](dist/RoboRall
 - `-p` or `--port`: Sets the port that the server uses to listen for clients. The default is 8888.
 - `-r` or `--replay`: Specifies the folder in which the server looks for replays and saves replays. The default is "replay".
 - `-s` or `--scenario`: Specifies the folder in which the server looks for scenarios. The default is "scenario".
-- `-a` or `--ai`: Specifies the folder in which the server looks for AIs. An AI needs to be packed in a JAR file containing a class with static methods `createAIClient(String, String, int, String, String, String, String)` and `getAiProfiles()`. See also section [https://github.com/magross/RoboRally/blob/master/README.md#ais](AI). The default is "ai".
+- `-a` or `--ai`: Specifies the folder in which the server looks for AIs. An AI needs to be packed in a JAR file containing a class with static methods `createAIClient(String, String, int, String, String, String, String)` and `getAiProfiles()`. See also section [AI](https://github.com/magross/RoboRally/blob/master/README.md#ais). The default is "ai".
 - `-h` or `--help`: Shows a list of these optional command line parameters. 
 - `--statistics`: If this is passed to the server, the server will add statistics to replays (e.g. when which player arrived with his robot).
-- Arguments without flags will be used as the welcome message.
+- Arguments without flags will be used as the welcome message. The default is "Welcome!".
   
 ## Communication with clients  
 The communication between server and clients is based on a custom protocol of text messages send via TCP. A message consists of a string with a line break at the end, and the message itself consists of one or multiple parts separated by the character `|`. The first part determines the type of the message, and all subsequent parts are parameters that depend on the type of the message.
