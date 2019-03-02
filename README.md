@@ -383,7 +383,7 @@ In the following, we will explain all of these message types in detail.
  }
  {GET\_SCENARIO | Risky Exchange}  
    
- ## Encoding of the area the robots are playing in
+ ## Encoding of scenarios
 
 The area is always rectangular, and every line of the area is terminated by the character `|`, and consists of game fields.
 
