@@ -9,7 +9,7 @@ The jar-file of the server can be found under [dist/RoboRally.jar](dist/RoboRall
 - `-p` or `--port`: Sets the port that the server uses to listen for clients. The default is 8888.
 - `-r` or `--replay`: Specifies the folder in which the server looks for replays and saves replays. The default is "replay".
 - `-s` or `--scenario`: Specifies the folder in which the server looks for scenarios. The default is "scenario".
-- `-a` or `--ai`: Specifies the folder in which the server looks for AIs. An AI needs to be packed in a JAR file containing a class with static methods `createAIClient(String, String, int, String, String, String, String)` and `getAiProfiles()`. See also section The default is "ai".
+- `-a` or `--ai`: Specifies the folder in which the server looks for AIs. An AI needs to be packed in a JAR file containing a class with static methods `createAIClient(String, String, int, String, String, String, String)` and `getAiProfiles()`. See also section [https://github.com/magross/RoboRally/blob/master/README.md#ais](AI). The default is "ai".
 
 
         UnflaggedOption opt6 = new UnflaggedOption("message").setStringParser(JSAP.STRING_PARSER).setDefault("Welcome!").setRequired(false).setGreedy(true);
