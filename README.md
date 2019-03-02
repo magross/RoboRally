@@ -371,25 +371,27 @@ Joins the game with the specified game, if there is still room for another playe
 
  *Number of arguments:* 0. *Valid in the following states:* Once the client has registered a name for itself and has created a game.
  
- { Startet ein Spiel, was man zuvor erstellt hat. Weitere Spieler können dem Spiel dann nicht mehr beitreten. Läuft das Spiel bereits, anwortet der Server mit
- \[
-  \text{\texttt{GAME\_IS\_ALREADY\_RUNNING}}
- \] 
- Der Server fängt dann mit dem Spiel an und schickt an alle mitspielenden Clienten folgende Nachrichten:
- \[
-  \text{\texttt{GAME\_STARTED | <Spielname>}}
- \]
- Anschließend wird die Reihenfolge der Spieler zufällig ausgelost, die resultierende Reihenfolge wird den Spielern mittels Nachrichten der Form
- \[
-  \text{\texttt{GAME\_PLAYERS | <Spieler1> | <Spieler2> | ...}}
- \] 
- bekannt gegeben. Danach erhalten alle Clienten die Szenario-Daten mittels einer 
- \[
-  \text{\texttt{GAME\_STATUS | ...}} 
- \]
- Nachricht. Die Scenario-Daten haben dieselbe Form wie bei \texttt{GET\_SCENARIO}. 
- }
- {START\_GAME} 
+ Starts a game that has been created by the client. After the game has been started, it will not be possible for other players to join the game. If the game has already been started, the server responds with
+ 
+ `GAME_IS_ALREADY_RUNNING`
+ 
+ Otherwise, the server starts the game and sends all clients that are participating in the game the following messages:
+ 
+ `GAME_STARTED | <Name of the game>`
+ 
+ Next, the order of the players will randomized, and the resulting order will be broadcasted to the players by 
+ 
+ `GAME_PLAYERS | <Player1> | <Player2> | ...`
+ 
+ After that, all clients will recieve the scenario information in form of a message of the type
+ 
+ `GAME_STATUS | ...`
+ 
+ The scenario information has the same form as for the `GET_SCENARIO` command.
+ 
+ Example:
+ 
+ `START_GAME`
 
 #### GAME_CHOICE
 
@@ -397,11 +399,11 @@ Joins the game with the specified game, if there is still room for another playe
 
  *Number of arguments:* 2. *Valid in the following states:* When playing a game.
 
- { Trifft eine vom Server mit
- \[
-  \text{\texttt{CHOOSE | <Art der Auswahl> | <Anzahl> | <Option1> | <Option2> | ...}}
- \] 
- angeforderte Auswahl. \texttt{<Art der Auswahl>} muss in dieser Nachricht identisch zu der in der \texttt{CHOOSE}-Nachricht sein. \texttt{<Auswahl>} besteht aus einer durch Kommata getrennten Liste von Zahlen. Die Anzahl der Zahlen in dieser Liste muss der \texttt{<Anzahl>} aus der \texttt{CHOOSE}-Nachricht entsprechen. Die Zahlen werden als Indizes der in der Server-Nachricht gelisteten Optionen interpretiert, wobei 0 der Index der ersten Option ist. Dementsprechend dürfen die Zahlen in der Auswahlliste nur ganze Zahlen zwischen 0 und \# Optionen$-1$ sein; außerdem darf keine Zahl doppelt vorkommen. Der Server gibt die Wahl des Spielers mittels
+Used to make a choice that was requested by the server in form of a message of the type:
+
+`CHOOSE | <Type of choice> | <Number of picks> | <Option1> | <Option2> | ...`
+ 
+ `<Type of choice>` has to be identical in both messages. <Auswahl>} besteht aus einer durch Kommata getrennten Liste von Zahlen. Die Anzahl der Zahlen in dieser Liste muss der \texttt{<Anzahl>} aus der \texttt{CHOOSE}-Nachricht entsprechen. Die Zahlen werden als Indizes der in der Server-Nachricht gelisteten Optionen interpretiert, wobei 0 der Index der ersten Option ist. Dementsprechend dürfen die Zahlen in der Auswahlliste nur ganze Zahlen zwischen 0 und \# Optionen$-1$ sein; außerdem darf keine Zahl doppelt vorkommen. Der Server gibt die Wahl des Spielers mittels
  \[
   \text{\texttt{CHOSEN | <Spielername> | <Art der Auswahl> | <Gewählte Objekte>}}
  \]
@@ -514,114 +516,4 @@ Wird ein Spieler zerstört (d.h. sein Roboter ist zerstört und er hat keine Leb
   
 ## AIs  
   
-%     GAME("%1$s | %2$s | %3$s | %4$s"),
-%     JOINING\_FAILED("%1$s"),
-%     PLAYER\_JOINED("%1$s"),
-%     PLAYER\_ARRIVED("%1$s"),
-%     PLAYER\_DESTROYED("%1$s"),
-%     NOT\_WAITING\_FOR\_THIS\_CHOICE("%1$s"),
-%     UNKNOWN\_CHOICE("%1$s"),
-%     CHOOSE {
-%     TIMEOUT("%1$s | %2$s"),ILLEGAL_CHOICE,NEW_PHASE("%1$s"),EXECUTING_PROGRAMS,EXECUTING_PROGRAM_CARD("%1$s"),
-% 
-%     GAME\_OVER("%1$s") {
-%     CHOSEN {
-% 
-% EFFECT\_OCCURRED("%1$s"),ROBOT_STATUS("%1$s"),
-%     ADMIN\_PRIVILEGES\_DENIED,
-%     ADMIN\_PRIVILEGES\_GRANTED,
-%     SAVES("%1$s"),
-%     GAMES("%1$s"),
-%     SCENARIOS("%1$s"),
-%     REPLAYS("%1$s"),
-%     REPLAY("%1$s"),
-%     REPLAY\_NOT\_FOUND,
-%     SCENARIO("%1$s"),
-%     GAME\_CREATED("%1$s"),
-%     GAME\_PLAYERS("%1$s"),
-%     GAME\_STATUS("%1$s"),
-%     PLAYER\_LEFT("%1$s"),
-%     NEW\_TURN("%1$s"),
-%     AWAITING\_REGISTRATION,
-%     CONNECTION\_CLOSED("%1$s"),
-%     GAME\_CHAT\_MESSAGE("%1$s | %2$s"),
-%     INCORRECT\_NUMBER\_OF\_PARAMETERS("%1$s | %2$s | $3$s"),
-%     INTRODUCTION\_SUCCESSFUL,
-%     MESSAGE\_NOT\_ALLOWED\_IN\_CURRENT\_STATE,
-%     NAME\_ALREADY\_IN\_USE,
-%     NO\_MESSAGE,
-%     PLAYER\_LEFT,
-%     PLAYER\_KICKED("%1$s | %2$s"),
-%     PLAYER\_NOT\_FOUND("%1$s"),
-%     GAME\_NOT\_FOUND("%1$s"),
-%     GAME\_STARTED("%1$s"),
-%     GAME\_IS\_ALREADY\_RUNNING,
-%     PRIVATE\_CHAT\_MESSAGE("%1$s | %2$s | %3$s"),
-%     PLAYERS("%1$s"),
-%     REGISTRATION\_DENIED,
-%     REGISTRATION\_SUCCESSFUL,
-%     SCENARIO\_NOT\_FOUND("%1$s"),
-%     SERVER\_ACCESS\_DENIED,
-%     SERVER\_CHAT\_MESSAGE("%1$s | %2$s"),
-%     UNKNOWN\_MESSAGE("%1$s"),
-%     WELCOME("%1$s");
-%        AUTHOR("Author:"),
-%         COURSE("Course:"),
-%         DESCRIPTION("Description:"),
-%         DIFFICULTY("Difficulty:"),
-%         HEIGHT("Height:"),
-%         LENGTH("Length:"),
-%         MAX\_PLAYERS("Max. Players:"),
-%         MIN\_PLAYERS("Min. Players:"),
-%         NAME("Name:"),
-%         WIDTH("Width:");
-%     UNKOWN\_CHOICE,
-%   	TURN\_AROUND
-%      ROTATE\_LEFT,
-%      ROTATE\_RIGHT,
-%      BACKMOVE\_1,
-%      MOVE\_2, 
-%      MOVE\_3, 
-% EXECUTING\_PROGRAM\_CARD,
-%          GAME\_STARTED, name,
-%          GAME\_PLAYERS, players,
-%          GAME\_STATUS, 
-%          EXECUTING\_PROGRAMS,
-%          NEW\_PHASE,
-%          PLAYER\_DESTROYED,
-%          PLAYER\_ARRIVED,
-%          EFFECT\_OCCURRED,
-%          ROBOT\_STATUS,
-%          BOARD\_ELEMENT\_MOVE,
-% 				 LASER\_FIRE,
-% 				 TOUCH\_CHECKPOINT,
-% 		\item Client Messages
-% 		GAME\_CHOICE,
-% 		CHOOSE,
-% 		    ANNOUNCE\_POWER\_DOWN,
-%         PROGRAMMING(Visibility.RESULT\_ONLY),
-%         REMAIN\_POWERED\_DOWN,
-%         SPAWN\_TILE,
-%         SPAWN\_DIRECTION;
 
-
-% 	GAME,
-% 	REPLAY,
-% 	SCENARIO,
-% 	GAME\_CREATED,
-% 	GAME\_IS\_ALREADY\_RUNNING,
-% 	JOINING\_FAILED,
-% 	NO\_MESSAGE,
-% 	UNKNOWN\_MESSAGE,
-% 	MESSAGE\_NOT\_ALLOWED\_IN\_CURRENT\_STATE,
-% 	INCORRECT\_NUMBER\_OF\_PARAMETERS,
-% 	NOT\_WAITING\_FOR\_THIS\_CHOICE,
-% 	CHOSEN,
-
-
-
-% 	INTRODUCTION\_SUCCESSFUL,
-% 	SERVER\_ACCESS\_DENIED,
-
-% 	REGISTRATION\_SUCCESSFUL,
-% 	NAME\_ALREADY\_IN\_USE,
