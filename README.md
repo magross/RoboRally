@@ -538,12 +538,11 @@ Conveyor elements have a direction, in which the shove things; this direction is
  `EXECUTE_PROGRAM_CARD | <Program card>`
  
  what is being executed. After the end of each phase and at the end of each turn the clients receive an update about the state of their robots by a message of the type:
- \ama
-  &\text{\texttt{ROBOT\_STATUS | <Name> | <Lebenspunkte> | <Max. Lebenspunkte>}}\\
-  &\text{\texttt{| <Zerstört?> | <Fortschritt> | <Archiv-Feld> | <Aktuelles Feld>}}\\
-  &\text{\texttt{| <Richtung> | <Abschalten angekündigt?> | <Abgeschaltet?>}} 
- \ema
- Dabei ist \texttt{<Name>} der Name des Spieler, dem der Roboter gehört; \texttt{<Lebenspunkte>} und \texttt{<Max. Lebenspunkte>} sind die aktuellen und maximalen Lebenspunkte des Roboters. \texttt{<Zerstört?>} gibt an, ob der Roboter zerstört ist, \texttt{<Fortschritt>} gibt die Anzahl erreichter Checkpoints an. \texttt{<Archiv-Feld>} und \texttt{<Aktuelles Feld>} geben die Position der Sicherungskopie und des Roboters an, die Koordinaten haben die Form $(x,y)$, wobei der Ursprung das oberste linke Feld des Spielplans ist. \texttt{<Richtung>} gibt die Richtung des Roboters an (NORTH, EAST, SOUTH, WEST), \texttt{<Abschalten angekündigt?>} und \texttt{<Abgeschaltet?>} genau das, was sie vermuten lassen.
+ 
+`ROBOT_STATUS | <Name> | <Life points> | <Max. Life points> | <Destroyed?> | <Progress> | <Archive field> | <Current field>
+  | <Direction> | <Power down announced?> | <Powered down?>`
+ 
+ `<Name>` is the name of player owning the robot; `<Life points>` and `<Max. Life points>` are the current and maximal life points of the robot. `<Destroyed?>` specifies whether the robot is destroyed, `<Progress>` is number of reached check points. `<Archive field>` and `<Current field>` are the positions of the backup-copy and the current position of the robot. The coordinates of the positions are specified as `(x,y)`, with `(0,0)` being the top left most field of the game area. `<Direction>` is one of `NORTH`, `EAST`, `SOUTH`, `WEST` and specifies the direction in which the robot is facing. `<Power down announced?>` and `<Powered down?>` indicate exactly what their names suggest.
                  
 If a player is destroyed, i.e. its robot is destroyed and there are no more lives left, a 
 
