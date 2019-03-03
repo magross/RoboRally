@@ -457,47 +457,28 @@ A game field consists of one or more factory elements, which can either be the c
 Factory elements that are only active in specific phases can have numbers from 1-5 appended to them to specify in which phases these elements become active. For example, `PU24` refers to a pusher factory element that is active in phase 2 and 4. 
 
 Conveyor elements have a direction, in which the shove things; this direction is specified by a lower case letter (n,e,s,w for north, east, south, west) directly after the upper case letters. If no other lower case letters are specified, it is assume that the origin of the conveyor is the direction opposite from the direction it is shoving things to. Otherwise, the origin directions can be specified by more lower cases letters. E.g., `Cwns` is a conveyor pushing things to west, coming from north and south; i.e. this conveyor is a T-shaped piece. For checkpoints, the numbers specified the order in which checkpoints have to be reached. The first checkpoint has the number 1. A list of all elements can be found below.
+
+If a field contains multiple elements at the same poition, for example a wall and a laser, then the elements are separated by a space and enclosed in round brackets, e.g. `(W L)` for the wall and laser example.
+
+The positions within a field (center, north, east, south, west) are encoded as follows: first, the center, then the four borders in the order north, east, south, west enclosed in square brackets. A field with wall and laser at the north and west border and a crusher active in Phase 1 would be `CR1[(W L)\_\_(W L)]`. An empty field on the other hand would be `_[____]`. As an abbreviation for fields with empty borders, the square brackets can be omitted; in this case, empty borders are assumed.
  
- Besitzt ein Feld mehrere Elemente an derselben Position, z.B. eine Mauer und ein Laser, werden die Elemente durch Leerzeichen getrennt und mit runden Klammern eingeschlossen, in dem Beispiel so: \texttt{(W L)}. 
- 
- Die unterschiedlichen Positionen eines Feldes (Mitte, Norden, Osten, Süden, Westen) werden wie folgt dargestellt: zuerst die Mitte, dann die vier Ränder in der Reihenfolge Norden, Osten, Süden, Westen eingeschlossen in eckige Klammern. Ein Feld mit Mauer und Laser in Norden und Westen sowie einer in der ersten Phase aktiven Presse wäre: \texttt{CR1[(W L)\_\_(W L)]}. Ein leeres Feld wäre entsprechend \texttt{\_[\_\_\_\_]}. Für Felder mit leerem Rand gibt es eine Abkürzung -- fehlen die eckigen Klammern nach einem Feld, wird automatisch ein leerer Rand angenommen.
- 
- Felder in einer Zeile werden durch Leerzeichen getrennt.   
- 
- \begin{table}
- \centering
- \begin{tabular}{|l|l|l|l|l|l|}
-  \hline
-  Abk. & Zugehöriges Element & Band & Phasen & Rand  & Weitere Parameter\\
-  \hline
-  \_ & Leer                  & Nein & Nein & Überall & --\\
-  \hline
-  C  & Förderband            & Ja   & Nein & Mitte   & --\\
-  \hline
-  CR & Presse                & Nein & Ja   & Mitte   & --\\
-  \hline
-  CP & Checkpoint            & Nein & Nein & Mitte   & Ziffer von 1-\# Checkpoints\\
-  \hline
-  E  & Expressförderband     & Ja   & Nein & Mitte   & --\\
-  \hline
-  G  & Zahnrad               & Nein & Nein & Mitte   & l oder r für die Richtung\\
-  \hline
-  L  & Laser                 & Nein & Nein & Rand    & --\\
-  \hline
-  P  & Grube                 & Nein & Nein & Mitte   & --\\
-  \hline
-  PU & Schieber              & Nein & Ja   & Rand    & --\\
-  \hline
-  R  & Reparaturfeld         & Nein & Nein & Mitte   & --\\
-  \hline
-  SP & Startpunkt            & Nein & Nein & Mitte   & Ziffer von 1-\# Spieler\\
-  \hline
-  U  & Großes Reparaturfeld  & Nein & Nein & Mitte   & --\\
-  \hline
-  W  & Mauer                 & Nein & Nein & Rand    & --\\
-  \hline
- \end{tabular}   
- \end{table}
+Fields in a row are separated by blanks.
+
+| Abbr.         | Element       | Conveyor | Phases | Border | Additional Parameters |
+| ------------- | ------------- | -------- | ------ | ------ | --------------------- |
+| _             | Empty         | No       | No     | Everywhere |                   | 
+| C             | Conveyor      | Yes      | No     | Center     |                   | 
+| CR            | Crusher       | No       | Yes    | Center     |                   | 
+| CP            | Checkpoint    | No       | No     | Center     | Digit from 1 to no. of checkpoints | 
+| E             | Express-Conveyor      | No      | No     | Center     |                   | 
+| G             | Gear      | No      | No     | Center     | 'l' or 'r' for direction       | 
+| L             | Laser      | No      | No     | Border     |            | 
+| P             | Pit      | No      | No     | Center     |            | 
+| PU             | Pusher      | No      | Yes     | Border     |            | 
+| R             | Repairshop      | No      | No     | Center     |            | 
+| SP            | Startpoint    | No       | No     | Center     | Digit from 1 to no. of players |  
+| U             | Upgradeshop      | No      | No     | Center     |            |  
+| W             | Wall      | No      | No     | Border     |            | 
    
  ## Communication during the game
  
