@@ -561,4 +561,4 @@ is sent, with the players being ordered in their order of arrival. After the gam
   
 ## AIs  
   
-
+AIs can connected to the server by implementation of this protocol; the same is possible for UI clients.
