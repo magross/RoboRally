@@ -61,6 +61,7 @@ The server accepts the following message types from the client:
   - [`CREATE_GAME`](https://github.com/magross/RoboRally/blob/master/README.md#create_game)
   - [`JOIN_GAME`](https://github.com/magross/RoboRally/blob/master/README.md#join_game)
   - [`START_GAME`](https://github.com/magross/RoboRally/blob/master/README.md#start_game)
+  - [`GAME_CHOICE`](https://github.com/magross/RoboRally/blob/master/README.md#game_choice)
   - [`CLOSE_CONNECTION`](https://github.com/magross/RoboRally/blob/master/README.md#close_connection)
   
 In the following, all of these message types will be explained in detail. If we are talking about strings, we assume that the character `|` is forbidden, and whitespace in the beginning and end is ignored.
@@ -421,11 +422,11 @@ If the server recognized the `<Type of choice>`, but it is send at an inappropri
  
  If `<Choice>` contains something invalid (for example, strings), the server sends
  
- `ILLEGAL\_CHOICE`
+ `ILLEGAL_CHOICE`
  
  Example:
  
- `GAME\_CHOICE | PROGRAMMING | 0,8,3,4,5`
+ `GAME_CHOICE | PROGRAMMING | 0,8,3,4,5`
  
 #### GET_SCENARIO
 
@@ -433,19 +434,19 @@ If the server recognized the `<Type of choice>`, but it is send at an inappropri
  
   *Number of arguments:* 1. *Valid in the following states:* Once the client has registered a name for itself.
  
- { Fragt ein auf dem Server existierendes Szenario ab. Existiert kein Szenario mit dem angegebenen Namen, antwortet der Server mit
- \[
-  \text{\texttt{SCENARIO\_NOT\_FOUND | <Szenarioname>}}
- \]
- Anderenfalls werden Informationen über das Szenario in der Form
- \ama
-  &\text{\texttt{SCENARIO | <Name> | <Breite> | <Höhe> | <Schwierigkeit> | <Dauer>}}\\
-  &\text{\texttt{| <Min. Spieler> | <Max. Spieler> | <Autor> | <Beschreibung>}}\\
-  &\text{\texttt{| <Spielfeld>}} 
- \ema
- geschickt. \texttt{<Name>} ist dabei der Name des Szenarios, \texttt{<Breite>} und \texttt{<Höhe>} sind Breite und Höhe des (immer rechteckigen) Spielfelds. \texttt{<Schwierigkeit>} ist ein vom Author festgelegter Hinweis auf die Schwierigkeit der Strecke (\texttt{EASY}, \texttt{MEDIUM} oder \texttt{EXPERT}); \texttt{<Dauer>} ein Hinweis auf die zum Spielen des Szenarios benötigte Zeit (\texttt{SHORT}, \texttt{MEDIUM} oder \texttt{LONG}). \texttt{Min. Spieler} und \texttt{Max. Spieler} geben die empfohlende Mindestanzahl von Spielern und die maximale Anzahl von Spielern für das Szenario an, es wird nur letztere vom Server erzwungen. \texttt{<Autor>} ist der Ersteller der Karte, \texttt{<Beschreibung>} ist eine vom Autor verfasste Beschreibung der Karte. \texttt{<Spielfeld>} beschreibt schließlich das Spielfeld, siehe dazu den nächsten Abschnitt. 
- }
- {GET\_SCENARIO | Risky Exchange}  
+ Requests a scenario on the server. If no scenario with the specified name exists, the server answers with 
+ 
+ `SCENARIO_NOT_FOUND | <Name of scenario>`
+ 
+ Otherwise, informations are provided by a message of the form
+ 
+ `SCENARIO | <Name> | <Width> | <Height> | <Difficulty> | <Duration> | <Min. Players> | <Max. Players> | <Author> | <Description> | <Game area>`
+
+ `<Name>` is the name of the scenario, `<Width>` and `<Height>` are width and height of the always rectangular game area. `<Difficulty>` is a difficulty indicator determined by the author, and is one either `EASY`, `MEDIUM` or `EXPERT`. Duration is an indicator of the length needed to play a scenario, that is either `SHORT`, `MEDIUM` or `LONG`. `<Min. Players>` and `Max. Players` are the recommended minimal and maximal number of players for this scenario; the server enforces only the maximal number of players, though. `<Author>` is the creator of the scenario, and `<Description>` is a description of the map.  `<Game area>` describes the game area in the format that is described in the next section.
+
+Example:
+
+`GET_SCENARIO | Some scenario`
    
  ## Encoding of scenarios
 
@@ -455,7 +456,7 @@ A game field consists of one or more factory elements, which can either be the c
 
 Factory elements that are only active in specific phases can have numbers from 1-5 appended to them to specify in which phases these elements become active. For example, `PU24` refers to a pusher factory element that is active in phase 2 and 4. 
 
- An Phasen-aktive Elemente können die Ziffern 1-5 angehängt werden um zu beschreiben, in welchen Phasen diese Elemente aktiv sind. \text{\texttt{PU24}} steht z.B. für einen Pusher, der in der 2. und 4. Phase aktiv wird. Band-Elemente wie Förderbänder haben eine Richtung, in der sie Transporieren, welche durch einen Kleinbuchstaben (n,e,s,w für Norden, Osten, Süden, Westen) direkt nach den Großbuchstaben angegeben wird. Werden keine weiteren Kleinbuchstaben angegeben, wird davon ausgegangen, dass das Band aus der gegenüberliegenden Richtung kommt. Ansonsten können die Herkunftsrichtungen durch weitere Kleinbuchstaben beschrieben werden. \texttt{Cwns} ist z.B. ein Förderband, was von Norden und Süden nach Westen transportiert (ein T-Stück also). Die Ziffern der Checkpoints definieren die Reihenfolge, in der die Checkpoints angefahren werden müssen, der erste Checkpoint hat dabei die Nummer 1. Eine Übersicht der Elemente findet sich in der Tabelle.
+Conveyor elements have a direction, in which the shove things; this direction is specified by a lower case letter (n,e,s,w for north, east, south, west) directly after the upper case letters. If no other lower case letters are specified, it is assume that the origin of the conveyor is the direction opposite from the direction it is shoving things to. Otherwise, the origin directions can be specified by more lower cases letters. E.g., `Cwns` is a conveyor pushing things to west, coming from north and south; i.e. this conveyor is a T-shaped piece. For checkpoints, the numbers specified the order in which checkpoints have to be reached. The first checkpoint has the number 1. A list of all elements can be found below.
  
  Besitzt ein Feld mehrere Elemente an derselben Position, z.B. eine Mauer und ein Laser, werden die Elemente durch Leerzeichen getrennt und mit runden Klammern eingeschlossen, in dem Beispiel so: \texttt{(W L)}. 
  
